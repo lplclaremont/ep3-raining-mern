@@ -1,10 +1,20 @@
 // file: frontend/src/components/locationsForm/LocationsForm.jsx
 
+import React, { useState } from 'react';
+
 function LocationsForm() {
+  const [selectedCity, setSelectedCity] = useState('');
+
+  const handleCityChange = (event) => {
+    setSelectedCity(event.target.value);
+  }
+
+  //console.log(selectedCity)
+
   return (
     <div>
       <label htmlFor="city-select">Select a city:</label>
-      <select id="city-select">
+      <select id="city-select" onChange={handleCityChange} >
         <option value="">Select a city</option>
         <option key='brighton' value='brighton'>
           Brighton, UK
@@ -22,6 +32,7 @@ function LocationsForm() {
           Santorini, Greece
           </option>
       </select>
+      <button onClick={() => handleGenerateClick(selectedCity)}>Generate</button>
       </div>
   );
 }
