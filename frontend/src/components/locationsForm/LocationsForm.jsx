@@ -2,16 +2,20 @@
 
 import React from 'react';
 
-function LocationsForm({ cityOptions, selectedCity, handleCityChange }) {
-  return <label for="cars">Choose a car:</label>
-    <select id="cars" name="cars">
-      <option value="volvo">Volvo</option>
-      <option value="saab">Saab</option>
-      <option value="fiat">Fiat</option>
-      <option value="audi">Audi</option>
+function LocationsForm() {
+  return (
+  <form>
+  <label htmlFor="locations">Choose a destination:</label>
+    <select id="locations" name="locations">
+      <option value="brighton">Brighton, UK</option>
+      <option value="lisbon">Lisbon, Portugal</option>
+      <option value="valencia">Valencia, Spain</option>
+      <option value="liga">Riga, Latvia</option>
+      <option value="santorini">Santorini, Greece</option>
     </select>
+  </form>
+  )
 }
-
 
 
 export default LocationsForm;
