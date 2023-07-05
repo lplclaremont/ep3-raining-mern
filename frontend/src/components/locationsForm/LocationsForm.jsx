@@ -19,5 +19,4 @@ function LocationsForm({ cityOptions, selectedCity, handleCityChange }) {
 }
 
 
-
 export default LocationsForm;

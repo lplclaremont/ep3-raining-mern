@@ -25,6 +25,7 @@ function App() {
         </a>
       </div>
       <h1>{appTitle}</h1>
+      <LocationsForm />
       <div className="card">
         <LocationsForm cityOptions={cityOptions} />
         <button onClick={() => setCount((count) => count + 1)}>
