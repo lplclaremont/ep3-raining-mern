@@ -7,7 +7,10 @@ import LocationsForm from './components/locationsForm/LocationsForm';
 function App() {
   const cityOptions = [
     { label: 'Brighton, UK', value: 'brighton' },
-    { label: 'Lisbon, Portugal', value: 'lisbon' }
+    { label: 'Lisbon, Portugal', value: 'lisbon' },
+    { label: 'Valencia, Spain', value: 'valencia' },
+    { label: 'Riga, Latvia', value: 'riga' },
+    { label: 'Santorini, Greece', value: 'santorini' }
   ];
 
   const [count, setCount] = useState(0)
