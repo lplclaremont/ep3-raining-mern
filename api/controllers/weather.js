@@ -36,7 +36,7 @@ const weatherController = {
       .then(data => processData(data))
 
 
-    res.send("Hello World! ");
+    // res.send("Hello World! ");
   },
 };
 
