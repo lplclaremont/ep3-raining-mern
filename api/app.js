@@ -1,4 +1,4 @@
-const express = require('express');
+const express = require("express");
 const app = express();
 const port = 3000;
 
@@ -6,10 +6,12 @@ const port = 3000;
 //     res.send('Hello world!');
 // });
 
-const weatherRouter = require('./routes/weather')
+const weatherRouter = require("./routes/weather");
 
-app.use('/weather', weatherRouter)
+app.use("/weather", weatherRouter);
 
 app.listen(port, () => {
-    console.log(`Server listening on port ${port}`);
+  console.log(`Server listening on port ${port}`);
 });
+
+// module.exports = app;
