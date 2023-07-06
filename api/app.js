@@ -14,6 +14,7 @@ app.use((req, res, next) => {
   next();
 });
 
+// Routes
 const weatherRouter = require("./routes/weather");
 app.use("/weather", weatherRouter);
 

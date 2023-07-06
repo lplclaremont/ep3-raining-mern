@@ -4,6 +4,7 @@ const processData = (data) => {
     lon: data.lon,
     daily: [],
   };
+
   for (let i = 0; i < 3; i++) {
     const dailyData = {
       dt: data.daily[i].dt,
@@ -18,8 +19,9 @@ const processData = (data) => {
       clouds: data.daily[i].clouds,
       pop: data.daily[i].pop,
     };
+
     processedData.daily.push(dailyData);
-  }
+  };
 
   return processedData;
 };
