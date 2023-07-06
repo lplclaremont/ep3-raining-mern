@@ -5,14 +5,19 @@ function Day ({ day }) {
     month: "long",
   });
 
-  console.log(formattedDate);
+  const roundedTemperature = day.temp.day.toFixed();
+
+  console.log(day);
   
   return (
     <article className="day" key={day.dt}>
-      <p>{formattedDate}</p>
+      <div className="date">{formattedDate}</div>
+      <div className="temperature">{roundedTemperature}°C</div>
+      <div className="weather">{day.weather[0].description}</div>
+      <div className="activity">{day.activity}</div>
     </article>
   )
 
 }
 
-export default Day
+export default Day;
