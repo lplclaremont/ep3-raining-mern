@@ -14,7 +14,7 @@ const weatherController = {
       .then(data => processData(data))
       .then(processedData => recommendActivities(processedData))
       .then(recommendationsData => res.status(200).json(recommendationsData))
-  },
+  }
 };
 
 module.exports = weatherController;
