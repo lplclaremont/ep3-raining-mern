@@ -13,7 +13,7 @@ function LocationsForm({ setData }) {
 
   const handleGenerateClick = () => {
     console.log(selectedCity)
-    fetch(`http://localhost:3000"/weather/?city=${selectedCity}`)
+    fetch(`http://localhost:3000/weather/?city=${selectedCity}`)
     .then(response => response.json())
     .then(data => setData(data))
   }
