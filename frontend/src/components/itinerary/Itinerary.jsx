@@ -1,11 +1,11 @@
 import React from 'react';
 
-function Itinerary( {itineraryData} ) {
+function Itinerary( {responseData} ) {
 
-    if (typeof itineraryData.daily != "undefined") {
+    if (typeof responseData.daily != "undefined") {
         return(
             <div>
-                {itineraryData.daily.map((dailyData) => (<p>a day here</p>))}
+                {responseData.daily.map((dailyData) => (<p>a day here</p>))}
             </div>
             )
     } else {
