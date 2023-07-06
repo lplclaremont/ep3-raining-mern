@@ -1,4 +1,4 @@
-const processData = require('./processData.js');
+const processData = require('../utils/processData.js');
 
 const cityLookup = {
   'brighton': {
@@ -23,20 +23,21 @@ const cityLookup = {
   }
 }
 
-const apiKey = 'f8a2fbf1b51fb5ad125f82f3708b1ad6'
-
 const weatherController = {
   getWeather: (req, res) => {
-    let city = req.body.city;
-    let lat = cityLookup.city.lat;
-    let lon = cityLookup.city.lon;
+    let city = req.query.city;
+    let lat = cityLookup[city].lat;
+    let lon = cityLookup[city].lon;
+    const apiKey = res.locals.apiKey;
+
+    console.log(apiKey)
 
     fetch(`https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&exclude=current,minutely,hourly,alerts&units=metric&appid=${apiKey}`)
       .then(response => response.json())
       .then(data => processData(data))
 
 
-    // res.send("Hello World! ");
+      res.send("Hello World!");
   },
 };
 

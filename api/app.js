@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const express = require("express");
 const app = express();
 const port = 3000;
@@ -6,8 +8,13 @@ const port = 3000;
 //     res.send('Hello world!');
 // });
 
-const weatherRouter = require("./routes/weather");
+// Middleware function to set environment variable in res.locals
+app.use((req, res, next) => {
+  res.locals.apiKey = process.env.OPENWEATHER_API_KEY;
+  next();
+});
 
+const weatherRouter = require("./routes/weather");
 app.use("/weather", weatherRouter);
 
 app.listen(port, () => {
