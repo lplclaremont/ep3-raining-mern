@@ -1,8 +1,8 @@
 // file: frontend/src/components/locationsForm/LocationsForm.jsx
 
-import React, { useState } from 'react';
+import { useState } from 'react'
 
-function LocationsForm({ setData }) {
+function LocationsForm({ setResponseData }) {
   
   const [selectedCity, setSelectedCity] = useState('');
   // const [message, setMessage] = useState(''); // display mock msg
@@ -15,7 +15,7 @@ function LocationsForm({ setData }) {
     console.log(selectedCity)
     fetch(`http://localhost:3000/weather/?city=${selectedCity}`)
     .then(response => response.json())
-    .then(data => setData(data))
+    .then(data => setResponseData(data.daily))
   }
 
   return (

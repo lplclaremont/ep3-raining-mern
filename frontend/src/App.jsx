@@ -20,7 +20,7 @@ function App() {
         </a>
       </div>
       <h1>WeatherWhisper App</h1>
-      <LocationsForm setData={ setResponseData } />
+      <LocationsForm setResponseData={ setResponseData }/>
       <Itinerary responseData={ responseData }/>
     </>
   );
