@@ -1,5 +1,4 @@
 {
-  //"proxy": "http://localhost:3000",
   "name": "frontend",
   "private": true,
   "version": "0.0.0",

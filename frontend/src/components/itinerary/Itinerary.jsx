@@ -1,16 +1,16 @@
 import React from 'react';
 
 function Itinerary( {itineraryData} ) {
-    console.log(itineraryData)
-    return (
-       <div> 
-        {/* {itineraryData.daily[0].dt} */}
-        
-         
 
-       </div>
-    )
-
+    if (typeof itineraryData.daily != "undefined") {
+        return(
+            <div>
+                {itineraryData.daily.map((dailyData) => (<p>a day here</p>))}
+            </div>
+            )
+    } else {
+        return (<p></p>)
+    }
 }
 
 export default Itinerary;
