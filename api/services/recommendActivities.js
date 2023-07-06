@@ -1,7 +1,7 @@
 
 const recommendActivities = (processedWeatherData) => {
     let dailyArray = processedWeatherData.daily;
-    
+
     const outdoorActivities = ["Beach", "Sightseeing", "Sports"];
     const indoorActivities = ["Museums", "Shopping", "Eating"];
 
@@ -18,8 +18,10 @@ const recommendActivities = (processedWeatherData) => {
     
     dailyArray = nonRainyDays.concat(rainyDays);
     dailyArray.sort((a, b) => a.dt - b.dt);
+    
+    processedWeatherData.daily = dailyArray
 
-    return {"daily": dailyArray};
+    return processedWeatherData;
 };
 
 module.exports = recommendActivities
