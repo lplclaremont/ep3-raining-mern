@@ -1,12 +1,11 @@
 require('dotenv').config();
 
 const express = require("express");
+const cors = require('cors')
 const app = express();
 const port = 3000;
 
-// app.get('/', (req,res) => {
-//     res.send('Hello world!');
-// });
+app.use(cors())
 
 // Middleware function to set environment variable in res.locals
 app.use((req, res, next) => {
