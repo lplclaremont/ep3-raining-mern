@@ -1,41 +1,15 @@
 // file: frontend/src/components/locationsForm/LocationsForm.jsx
 
-import React, { useState } from 'react';
+import React from 'react';
 
-function LocationsForm() {
-  const [selectedCity, setSelectedCity] = useState('');
-  const [message, setMessage] = useState(''); // display mock msg
+function LocationsForm({selectedCity, onCityChange, onGenerateClick }) {
 
   const handleCityChange = (event) => {
-    setSelectedCity(event.target.value);
+    onCityChange(event.target.value);
   }
-
   const handleGenerateClick = () => {
-    fetch('/weather', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ city: selectedCity }),
-    })
-      .then((response) => response.text())
-      .then((data) => {
-        try {
-          const parsedData = JSON.parse(data);
-          setMessage(`Day: ${parsedData?.Day}<br />
-            Weather: ${parsedData?.weather}<br />
-            Activities: ${parsedData?.activities?.join(', ')}`);
-        } catch(error) {
-          console.error(error);
-          setMessage('Error occurred while parsing weather data.');
-        }
-      })
-      .catch((error) => {
-        console.error(error);
-        setMessage('Error occurred while fetching weather data.');
-      });
-  };
-
+    onGenerateClick();
+  }
 
   return (
     <div>
@@ -59,7 +33,6 @@ function LocationsForm() {
         </option>
       </select>
       <button onClick={() => handleGenerateClick(selectedCity)}>Generate</button>
-      {message && <p dangerouslySetInnerHTML={{ __html: message }}></p>}
     </div>
   );
 }
