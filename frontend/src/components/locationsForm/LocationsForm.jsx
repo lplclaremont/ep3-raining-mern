@@ -44,7 +44,7 @@ function LocationsForm({ setResponseData }) {
           Santorini, Greece
         </option>
       </select>
-      <Activities setPreferredActivities={ setPreferredActivities } />
+      <Activities preferredActivities={ preferredActivities } />
       <button onClick={() => handleGenerateClick(selectedCity)}>Generate</button>
       </div>
   );
