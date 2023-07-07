@@ -37,8 +37,11 @@ function LocationsForm({ setResponseData }) {
         <option key='riga' value='riga'>
           Riga, Latvia
         </option>
-        <option key='santorini' value='santorini'>
-          Santorini, Greece
+        <option key='bournemouth' value='bournemouth'>
+          Bournemouth, UK
+        </option>
+        <option key='cornwall' value='cornwall'>
+          Cornwall, UK
         </option>
       </select>
       <button onClick={() => handleGenerateClick(selectedCity)}>Generate</button>
