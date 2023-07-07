@@ -21,7 +21,7 @@ function LocationsForm({ setResponseData }) {
   return (
     <div>
       <label htmlFor="city-select">Select a city:</label>
-      <select id="city-select" onChange={handleCityChange}>
+      <select id="city-select" data-cy="city-dropdown" onChange={handleCityChange}>
         {/* <option key='default-empty' value=''>
           Select a city
         </option> */}
