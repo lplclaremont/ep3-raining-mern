@@ -1,15 +1,49 @@
 // file: frontend/src/components/locationsForm/LocationsForm.jsx
 
-import React from 'react';
+import React, { useState } from 'react';
 
-function LocationsForm({selectedCity, onCityChange, onGenerateClick }) {
-
+function LocationsForm() {
+  
+  const [selectedCity, setSelectedCity] = useState('');
+  const [message, setMessage] = useState(''); // display mock msg
+  
   const handleCityChange = (event) => {
-    onCityChange(event.target.value);
+    setSelectedCity(event.target.value);
   }
+
   const handleGenerateClick = () => {
-    onGenerateClick();
-  }
+    //uncomment the following lines out to use the actual API
+    /*
+    fetch('/api/weather', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ city: selectedCity }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        //handle  the actual API response here
+        setMessage(`Day: ${data.Day}<br />
+        Weather: ${data.weather}<br />
+        activities: ${data.activities.join(',)}`
+        );
+      });
+    */
+
+   // comment out the following lines to use the actual API
+   //mock API response
+   const mockResponse = {
+    day: 'Monday',
+    weather: 'Sunny',
+    activities: ['Hiking', 'Picnic'],
+   };
+   setMessage(
+    `Day: ${mockResponse.day}<br />
+    Weather: ${mockResponse.weather}<br />
+    activities: ${mockResponse.activities.join(', ')}`
+    );
+  };
 
   return (
     <div>
@@ -33,7 +67,8 @@ function LocationsForm({selectedCity, onCityChange, onGenerateClick }) {
         </option>
       </select>
       <button onClick={() => handleGenerateClick(selectedCity)}>Generate</button>
-    </div>
+      {message && <p dangerouslySetInnerHTML={{__html: message }}></p>}
+      </div>
   );
 }
 
