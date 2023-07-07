@@ -1,10 +1,13 @@
-//import { useState } from 'react'
+import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import LocationsForm from './components/locationsForm/LocationsForm';
+import Itinerary  from './components/itinerary/Itinerary';
 
 function App() {
+  const [responseData, setResponseData] = useState([]);
+  console.log(responseData)
 
   return (
     <>
@@ -17,8 +20,8 @@ function App() {
         </a>
       </div>
       <h1>WeatherWhisper App</h1>
-      <LocationsForm />
-    
+      <LocationsForm setResponseData={ setResponseData }/>
+      <Itinerary responseData={ responseData }/>
     </>
   );
 }
