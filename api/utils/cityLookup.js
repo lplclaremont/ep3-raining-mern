@@ -27,6 +27,30 @@ const cityLookup = {
     lat: 45.0184417,
     lon: -74.728703,
   },
+  miami: {
+    lat: 25.7617,
+    lon: -80.1918,
+  },
+  honolulu: {
+    lat: 21.3069,
+    lon: -157.8583,
+  },
+  nice: {
+    lat: 43.7034,
+    lon: 7.2663,
+  },
+  phuket: {
+    lat: 7.8804,
+    lon: 98.3923,
+  },
+  bali: {
+    lat: -8.3405,
+    lon: 115.092,
+  },
+  mykonos: {
+    lat: 37.4467,
+    lon: 25.3289,
+  },
 };
 
 module.exports = cityLookup;

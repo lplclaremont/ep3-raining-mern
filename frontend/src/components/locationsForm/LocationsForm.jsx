@@ -37,11 +37,32 @@ function LocationsForm({ setResponseData }) {
         <option key='riga' value='riga'>
           Riga, Latvia
         </option>
+        <option key='santorini' value='santorini'>
+          Santorini, Greece
+        </option>
         <option key='bournemouth' value='bournemouth'>
           Bournemouth, UK
         </option>
         <option key='cornwall' value='cornwall'>
           Cornwall, UK
+        </option>
+        <option key='miami' value='miami'>
+         Miami, US
+        </option>
+        <option key='honolulu' value='honolulu'>
+        Honolulu, United States
+        </option>
+        <option key='nice' value='nice'>
+        Nice, France
+        </option>
+        <option key='phuket' value='phuket'>
+        Phuket, Thailand
+        </option>
+        <option key='bali' value='bali'>
+        Bali, Indonesia
+        </option>
+        <option key='mykonos' value='mykonos'>
+        Mykonos, Greece
         </option>
       </select>
       <button onClick={() => handleGenerateClick(selectedCity)}>Generate</button>
