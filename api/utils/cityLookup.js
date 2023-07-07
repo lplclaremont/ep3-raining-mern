@@ -39,6 +39,10 @@ const cityLookup = {
     lat: 43.7034,
     lon: 7.2663,
   },
+  danang: {
+    lat: 16.0544,
+    lon: 108.2022
+  },
   phuket: {
     lat: 7.8804,
     lon: 98.3923,

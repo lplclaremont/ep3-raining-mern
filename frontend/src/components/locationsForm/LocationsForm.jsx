@@ -55,6 +55,9 @@ function LocationsForm({ setResponseData }) {
         <option key='nice' value='nice'>
         Nice, France
         </option>
+        <option key='danang' value='danang'>
+        DaNang, Vietnam
+        </option>
         <option key='phuket' value='phuket'>
         Phuket, Thailand
         </option>
