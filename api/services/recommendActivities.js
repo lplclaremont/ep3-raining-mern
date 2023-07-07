@@ -33,7 +33,7 @@ const recommendActivities = (processedWeatherData, activities) => {
 
   processedWeatherData.daily = dailyArray;
 
-  console.log(processedWeatherData);
+  // console.log(processedWeatherData);
 
   return processedWeatherData;
 };
