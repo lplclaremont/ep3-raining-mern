@@ -1,25 +1,39 @@
-const recommendActivities = (processedWeatherData) => {
+const activities = require('../utils/activities');
+
+const recommendActivities = (processedWeatherData, activities) => {
   let dailyArray = processedWeatherData.daily;
 
-  const outdoorActivities = ["Beach", "Sightseeing", "Sports"];
-  const indoorActivities = ["Museums", "Shopping", "Eating"];
-
-  dailyArray.sort((a, b) => b.temp.day - a.temp.day);
-  const rainyDays = dailyArray.filter((day) => day.weather[0].main === 'Rain');
-  const nonRainyDays = dailyArray.filter((day) => day.weather[0].main !== 'Rain');
-
-  nonRainyDays.forEach((day, index) => {
-      day.activity = outdoorActivities[index];
+  dailyArray.sort((a, b) => {
+    if (a.weather[0].main === 'Rain' && b.weather[0].main !== 'Rain') {
+      return 1; // Move rainy day to the end
+    }
+    if (a.weather[0].main !== 'Rain' && b.weather[0].main === 'Rain') {
+      return -1; // Move non-rainy day to the beginning
+    }
+    return b.temp.day - a.temp.day; // Sort by temperature (hot to cold)
   });
 
-  rainyDays.forEach((day, index) => {
-      day.activity = indoorActivities[index];
+  const allActivities = Object.entries(activities)
+    .sort((a, b) => a[1].ranking - b[1].ranking)
+    .map(([activity]) => activity);
+
+  dailyArray.forEach((day) => {
+    if (day.weather[0].main !== 'Rain') {
+      day.activity = allActivities.shift();
+    } else {
+      const indoorActivityIndex = allActivities.findIndex(
+        (activity) => activities[activity].type === 'indoor'
+      );
+      day.activity = allActivities[indoorActivityIndex];
+      allActivities.splice(indoorActivityIndex, 1);
+    }
   });
-  
-  dailyArray = nonRainyDays.concat(rainyDays);
-  dailyArray.sort((a, b) => a.dt - b.dt);
-  
-  processedWeatherData.daily = dailyArray
+
+  dailyArray.sort((a, b) => a.dt - b.dt); // Sort by date (ascending)
+
+  processedWeatherData.daily = dailyArray;
+
+  console.log(processedWeatherData);
 
   return processedWeatherData;
 };
