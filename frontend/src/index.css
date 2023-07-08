@@ -29,6 +29,17 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  background-size: cover;
+  animation: changeBG 12s infinite;
+  background-image: url('/beach.jpg');
+}
+
+@keyframes changeBG {
+  0% {background-image: url('/beach1.jpg');}
+  25% {background-image: url('/relax.jpg');}
+  50% {background-image: url('/paris.jpg');}
+  75% {background-image: url('/nyc.jpg');}
+  100% {background-image: url('/vnbeach.jpg');}
 }
 
 h1 {
@@ -64,6 +75,6 @@ button:focus-visible {
     color: #747bff;
   }
   button {
-    background-color: #f9f9f9;
+    background-color: #f4faec;
   }
 }
