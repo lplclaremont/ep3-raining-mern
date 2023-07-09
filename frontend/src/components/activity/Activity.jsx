@@ -1,18 +1,19 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react';
+import './Activity.css'; 
 
 function Activity({ activityName, preferredActivities, setPreferredActivities }) {
-  const [checked, setChecked] = useState(false);
+  const [clicked, setClicked] = useState(false);
 
   useEffect(() => {
-    console.log(checked);
+    console.log(clicked);
     console.log(preferredActivities);
   }, [preferredActivities]);
 
-  const handleChange = () => {
-    const newChecked = !checked;
-    setChecked(newChecked);
+  const handleClick = () => {
+    const newClicked = !clicked;
+    setClicked(newClicked);
 
-    if (newChecked) {
+    if (newClicked) {
       const updatedActivities = [...preferredActivities, activityName];
       setPreferredActivities(updatedActivities);
     } else {
@@ -22,12 +23,9 @@ function Activity({ activityName, preferredActivities, setPreferredActivities })
   }
   
   return(
-    <div>
-      <input type="checkbox" onChange={handleChange}></input>  
-      <p>
-        {checked ? `${activityName}` : `not a ${activityName}`}
-      </p> 
-    </div> 
+    <button className={`button-activity ${clicked ? 'active' : ''}`} onClick={handleClick}>
+      {activityName}
+    </button>
   );
 };
 

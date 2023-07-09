@@ -5,7 +5,7 @@ function Activities({ preferredActivities, setPreferredActivities }) {
   const activityNames = ['beach', 'museums', 'sports', 'shopping'];
 
   return (
-    <>
+    <div>
       {activityNames.map((activityName) => (
         <Activity
           key={activityName}
@@ -14,7 +14,7 @@ function Activities({ preferredActivities, setPreferredActivities }) {
           setPreferredActivities={setPreferredActivities}
         />
       ))}
-    </>
+    </div>
   );
 }
 
