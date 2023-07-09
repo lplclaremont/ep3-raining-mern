@@ -22,9 +22,9 @@ function LocationsForm({ setResponseData }) {
     <div>
       <label htmlFor="city-select">Select a city:</label>
       <select id="city-select" onChange={handleCityChange}>
-        {/* <option key='default-empty' value=''>
+        <option key='default-empty' value=''>
           Select a city
-        </option> */}
+        </option>
         <option key='brighton' value='brighton'>
           Brighton, UK
         </option>
