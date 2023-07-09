@@ -15,18 +15,25 @@ const recommendActivities = (processedWeatherData, activities) => {
 
   const allActivities = Object.entries(activities)
     .sort((a, b) => a[1].ranking - b[1].ranking)
-    .map(([activity]) => activity);//removes the objects, and converts into array of just activities
+    //.map(([activity]) => activity);//removes the objects, and converts into array of just activities
 
   dailyArray.forEach((day) => {
-    if (day.weather[0].main !== 'Rain') {
-      day.activity = allActivities.shift();
+    if (day.weather[0].id >= 800) {
+      day.activity = allActivities[0][0];
+      allActivities.shift();
     } else {
-      const indoorActivityIndex = allActivities.findIndex(
-        (activity) => activities[activity].type === 'indoor' //checks through the activities for the first where the type is indoor
-      );
+      allActivities.forEach((activity) => {
+        if(activity[1].type == "indoor"){
+          day.activity = activity[0]
+        }
+        }
+      )
+      allActivities.pop()
+
+       //checks through the activities for the first where the type is indoor
+      
       //above find the index
-      day.activity = allActivities[indoorActivityIndex]; 
-      allActivities.splice(indoorActivityIndex, 1); //removes the activity from the allactivities array
+      //removes the activity from the allactivities array
     }
   });
 
