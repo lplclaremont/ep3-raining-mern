@@ -1,33 +1,13 @@
-import { useState, useEffect } from 'react'
+import Activity from '../activity/Activity';
+
 
 function Activities({ preferredActivities, setPreferredActivities }) {
-  const [checked, setChecked] = useState(false);
-
-  useEffect(() => {
-    console.log(checked);
-    console.log(preferredActivities);
-  }, [preferredActivities]);
-
-  const handleChange = () => {
-    const newChecked = !checked;
-    setChecked(newChecked);
-
-    if (newChecked) {
-      const updatedActivities = [...preferredActivities, 'beach'];
-      setPreferredActivities(updatedActivities);
-    } else {
-      const updatedActivities = preferredActivities.filter(activity => activity !== 'beach');
-      setPreferredActivities(updatedActivities);
-    }
-  }
+  
   
   return(
-    <div>
-      <input type="checkbox" onChange={handleChange}></input>  
-      <p>
-        {checked ? 'beach' : 'not a beach'}
-      </p> 
-    </div> 
+    <>
+      <Activity preferredActivities={ preferredActivities} setPreferredActivities={ setPreferredActivities} />
+    </> 
   );
 };
 
