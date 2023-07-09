@@ -1,14 +1,21 @@
+import React from 'react';
 import Activity from '../activity/Activity';
 
-
 function Activities({ preferredActivities, setPreferredActivities }) {
-  
-  
-  return(
+  const activityNames = ['beach', 'museums', 'sports', 'shopping'];
+
+  return (
     <>
-      <Activity preferredActivities={ preferredActivities} setPreferredActivities={ setPreferredActivities} />
-    </> 
+      {activityNames.map((activityName) => (
+        <Activity
+          key={activityName}
+          activityName={activityName}
+          preferredActivities={preferredActivities}
+          setPreferredActivities={setPreferredActivities}
+        />
+      ))}
+    </>
   );
-};
+}
 
 export default Activities;

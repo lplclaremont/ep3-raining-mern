@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 
-function Activity({ preferredActivities, setPreferredActivities }) {
+function Activity({ activityName, preferredActivities, setPreferredActivities }) {
   const [checked, setChecked] = useState(false);
 
   useEffect(() => {
@@ -13,10 +13,10 @@ function Activity({ preferredActivities, setPreferredActivities }) {
     setChecked(newChecked);
 
     if (newChecked) {
-      const updatedActivities = [...preferredActivities, 'beach'];
+      const updatedActivities = [...preferredActivities, activityName];
       setPreferredActivities(updatedActivities);
     } else {
-      const updatedActivities = preferredActivities.filter(activity => activity !== 'beach');
+      const updatedActivities = preferredActivities.filter(activity => activity !== activityName);
       setPreferredActivities(updatedActivities);
     }
   }
@@ -25,7 +25,7 @@ function Activity({ preferredActivities, setPreferredActivities }) {
     <div>
       <input type="checkbox" onChange={handleChange}></input>  
       <p>
-        {checked ? 'beach' : 'not a beach'}
+        {checked ? `${activityName}` : `not a ${activityName}`}
       </p> 
     </div> 
   );
