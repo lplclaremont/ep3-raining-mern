@@ -13,7 +13,8 @@ function LocationsForm({ setResponseData }) {
   }
 
   const handleGenerateClick = () => {
-    console.log(selectedCity)
+    console.log(selectedCity);
+    console.log(preferredActivities);
 
     fetch(`http://localhost:3000/weather/?city=${selectedCity}`)
     .then(response => response.json())
@@ -44,7 +45,7 @@ function LocationsForm({ setResponseData }) {
           Santorini, Greece
         </option>
       </select>
-      <Activities preferredActivities={ preferredActivities } />
+      <Activities preferredActivities={ preferredActivities} setPreferredActivities={ setPreferredActivities} />
       <button onClick={() => handleGenerateClick(selectedCity)}>Generate</button>
       </div>
   );
