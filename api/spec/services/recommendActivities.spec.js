@@ -59,37 +59,46 @@ describe('#recommendActivities', ()=>{
         };
     });
     
-    test('returns the original weather data for each day forecast', () => {
-        result = recommendActivities(mockProcessedWeatherData, activities);
+    describe('with no user activity selection', () => {
+        it('returns the original weather data for each day forecast', () => {
+            result = recommendActivities(mockProcessedWeatherData, activities, []);
         
-        expect(result.daily[0].dt).toEqual(1684951200)
-        expect(result.daily[0].temp.day).toEqual(23.05)
-        expect(result.daily[0].weather[0].id).toEqual(500)
-        expect(result.daily[0].weather[0].main).toEqual("Rain")
-        expect(result.daily[0].weather[0].description).toEqual("light rain")
+            expect(result.daily[0].dt).toEqual(1684951200)
+            expect(result.daily[0].temp.day).toEqual(23.05)
+            expect(result.daily[0].weather[0].id).toEqual(500)
+            expect(result.daily[0].weather[0].main).toEqual("Rain")
+            expect(result.daily[0].weather[0].description).toEqual("light rain")
+    
+            expect(result.daily[1].dt).toEqual(1685037600)
+            expect(result.daily[1].temp.day).toEqual(19.10)
+            expect(result.daily[1].weather[0].id).toEqual(800)
+            expect(result.daily[1].weather[0].main).toEqual("Clear")
+            expect(result.daily[1].weather[0].description).toEqual("clear sky")
+        })
 
-        expect(result.daily[1].dt).toEqual(1685037600)
-        expect(result.daily[1].temp.day).toEqual(19.10)
-        expect(result.daily[1].weather[0].id).toEqual(800)
-        expect(result.daily[1].weather[0].main).toEqual("Clear")
-        expect(result.daily[1].weather[0].description).toEqual("clear sky")
+        it('adds beach to hottest clear day', () => {
+            result = recommendActivities(mockProcessedWeatherData, activities, []);
+            expect(result.daily[2].activity).toEqual("beach");
+        })
+    
+        it('adds sightseeing to next hottest clear day', () => {
+            result = recommendActivities(mockProcessedWeatherData, activities, []);
+            expect(result.daily[1].activity).toEqual("sightseeing")
+        })
 
+        it('adds museums to first rainy day', () => {
+            result = recommendActivities(mockProcessedWeatherData, activities, []);
+            expect(result.daily[0].activity).toEqual("museums")
+        })
     });
 
-    test('checking include search works', () => {
-        result = recommendActivities(mockProcessedWeatherData, activities);
-        console.log(result);
-        expect(result.daily[2].activity).toEqual("beach");
-    })
+    describe('with user prioritised selections', () => {
+        it('adds the first outdoor activity in the array to the hottest non-rainy day', () => {
+            let userSelected = ["museums", "eating", "sightseeing"]
+            result = recommendActivities(mockProcessedWeatherData, activities, userSelected);
+            expect(result.daily[2].activity).toEqual("sightseeing")
+        })
 
-    xtest('adds a outdoor activity to a clear day that is not the hottest', () => {
-        result = recommendActivities(mockProcessedWeatherData, activities);
-        expect(result.daily[1].activity).toEqual("sightseeing")
-    })
-
-    xtest('adds the first outdoor activity in the array to the hottest non-rainy day', () => {
-        result = recommendActivities(mockProcessedWeatherData, activities);
-        expect(result.daily[2].activity).toEqual("beach")
     })
 
     xtest('adds all indoor activities if all three days are rainy, sorted by temperature', ()=> {
