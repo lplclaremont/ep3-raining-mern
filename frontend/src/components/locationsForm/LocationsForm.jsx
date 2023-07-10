@@ -50,7 +50,7 @@ function LocationsForm({ setResponseData }) {
          Miami, US
         </option>
         <option key='honolulu' value='honolulu'>
-        Honolulu, United States
+        Honolulu, US
         </option>
         <option key='nice' value='nice'>
         Nice, France
@@ -63,6 +63,12 @@ function LocationsForm({ setResponseData }) {
         </option>
         <option key='mykonos' value='mykonos'>
         Mykonos, Greece
+        </option>
+        <option key='malibu' value='malibu'>
+        Malibu, US
+        </option>
+        <option key='athens' value='athens'>
+        Athens, Greek
         </option>
       </select>
       <button onClick={() => handleGenerateClick(selectedCity)}>Generate</button>

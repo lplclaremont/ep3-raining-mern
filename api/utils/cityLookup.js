@@ -44,12 +44,20 @@ const cityLookup = {
     lon: 98.3923,
   },
   bali: {
-    lat: -8.3405,
-    lon: 115.092,
+    lat: -8.5,
+    lon: 115,
   },
   mykonos: {
     lat: 37.4467,
     lon: 25.3289,
+  },
+  malibu: {
+    lat: 34.035591,
+    lon: -118.689423,
+  },
+  athens: {
+    lat: 37.9839412,
+    lon: 23.7283052,
   },
 };
 
