@@ -9,12 +9,14 @@ const weatherController = {
     let city = req.query.city;
     let lat = cityLookup[city].lat;
     let lon = cityLookup[city].lon;
+    let userSelected = req.query.activities === undefined ? [] : req.query.activities.split(",")
+    console.log(userSelected)
     const apiKey = res.locals.apiKey;
 
     fetch(`https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&exclude=current,minutely,hourly,alerts&units=metric&appid=${apiKey}`)
       .then(response => response.json())
       .then(data => processData(data))
-      .then(processedData => recommendActivities(processedData, activites))
+      .then(processedData => recommendActivities(processedData, activites, userSelected))
       .then(recommendationsData => res.status(200).json(recommendationsData))
   }
 };

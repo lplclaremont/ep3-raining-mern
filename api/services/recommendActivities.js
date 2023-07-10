@@ -1,12 +1,24 @@
-//const activities = require('../utils/activities');
 
-const recommendActivities = (processedWeatherData, activities, userSelected) => {
+const recommendActivities = (processedWeatherData, activities, userSelectedActivities) => {
   let dailyArray = processedWeatherData.daily;
-
-  userSelected.forEach((activity) => {
+  // Update 'chosen' boolean on activities to reflect the user selection 
+  userSelectedActivities.forEach((activity) => {
     activities[activity].chosen = true
   })
+  // Sort the weather from best - worst days
+  sortBestWeather(dailyArray)
+  // Get the user's selected activities to front of the list
+  const prioritisedActivities = prioritiseUserSelection(activities)
+  // Assign the best activity to best day
+  assignActivities(dailyArray, prioritisedActivities, activities)
 
+  dailyArray.sort((a, b) => a.dt - b.dt); // Sort by date (ascending)
+  processedWeatherData.daily = dailyArray; // Update daily array with new activity data
+
+  return processedWeatherData;
+};
+
+const sortBestWeather = (dailyArray) => {
   dailyArray.sort((a, b) => {
     if (a.weather[0].id < b.weather[0].id) {
       return 1; // Move worse weather i.e. lower id to the end
@@ -16,35 +28,25 @@ const recommendActivities = (processedWeatherData, activities, userSelected) => 
     }
     return b.temp.day - a.temp.day; // Sort by temperature (hot to cold)
   });
+}
 
-  const orderedActivities = Object.entries(activities)
-    .sort((a, b) => {
-      if (a[1].chosen && !b[1].chosen) {
-        return -1
-      } else if (!a[1].chosen && b[1].chosen) {
-        return 1
-      } else {
-        return 0
-      }
-    })
+const prioritiseUserSelection = (activities) => {
+  return Object.entries(activities)
+    .filter((activity) => activity[1].chosen)
+    .concat(Object.entries(activities)
+    .filter((activity) => !activity[1].chosen))
     .map(([activity]) => activity);
+}
 
+const assignActivities = (dailyArray, prioritisedActivities, activities) => {
   dailyArray.forEach((day) => {
-    const index = orderedActivities.findIndex(
+    const index = prioritisedActivities.findIndex(
       (activity) => activities[activity].optimalConditions.includes(day.weather[0].id)
     )
-    day.activity = orderedActivities[index]
-    orderedActivities.splice(index, 1);
+    day.activity = prioritisedActivities[index]
+    prioritisedActivities.splice(index, 1);
   });
-
-  dailyArray.sort((a, b) => a.dt - b.dt); // Sort by date (ascending)
-
-  processedWeatherData.daily = dailyArray;
-
-  // console.log(processedWeatherData);
-
-  return processedWeatherData;
-};
+}
 
 module.exports = recommendActivities;
 

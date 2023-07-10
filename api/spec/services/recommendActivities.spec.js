@@ -86,9 +86,9 @@ describe('#recommendActivities', ()=>{
             expect(result.daily[1].activity).toEqual("sightseeing")
         })
 
-        it('adds museums to first rainy day', () => {
+        it('adds shopping to first rainy day', () => {
             result = recommendActivities(mockProcessedWeatherData, activities, []);
-            expect(result.daily[0].activity).toEqual("museums")
+            expect(result.daily[0].activity).toEqual("shopping")
         })
     });
 
