@@ -24,6 +24,21 @@ function LocationsForm({ setResponseData }) {
         <option key='brighton' value='brighton'>
           Brighton, UK
         </option>
+        <option key='bournemouth' value='bournemouth'>
+          Bournemouth, UK
+        </option>
+        <option key='cornwall' value='cornwall'>
+          Cornwall, UK
+        </option>	   
+        <option key='danang' value='danang'>
+        DaNang, Vietnam
+        </option>
+        <option key='phuket' value='phuket'>
+        Phuket, Thailand
+        </option>
+        <option key='bali' value='bali'>
+        Bali, Indonesia
+        </option>
         <option key='lisbon' value='lisbon'>
           Lisbon, Portugal
         </option>
@@ -35,6 +50,24 @@ function LocationsForm({ setResponseData }) {
         </option>
         <option key='santorini' value='santorini'>
           Santorini, Greece
+        </option>
+        <option key='miami' value='miami'>
+         Miami, US
+        </option>
+        <option key='honolulu' value='honolulu'>
+        Honolulu, US
+        </option>
+        <option key='nice' value='nice'>
+        Nice, France
+        </option>
+        <option key='mykonos' value='mykonos'>
+        Mykonos, Greece
+        </option>
+        <option key='malibu' value='malibu'>
+        Malibu, US
+        </option>
+        <option key='athens' value='athens'>
+        Athens, Greek
         </option>
       </select>
       <button onClick={handleGenerateClick} className="generate-button">Generate</button>
