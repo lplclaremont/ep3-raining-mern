@@ -1,30 +1,26 @@
-// file: frontend/src/components/locationsForm/LocationsForm.jsx
-
-import { useState } from 'react'
+import { useState } from 'react';
+import '../locationsForm/LocationsForm.css';
 
 function LocationsForm({ setResponseData }) {
   const [selectedCity, setSelectedCity] = useState('');
-  
+
   const handleCityChange = (event) => {
     setSelectedCity(event.target.value);
-  }
+  };
 
   const handleGenerateClick = () => {
-    console.log(selectedCity)
+    console.log(selectedCity);
 
     fetch(`http://localhost:3000/weather/?city=${selectedCity}`)
-    .then(response => response.json())
-    .then(data => setResponseData(data.daily))
-    .catch(error => console.error(error));
-  }
+      .then(response => response.json())
+      .then(data => setResponseData(data.daily))
+      .catch(error => console.error(error));
+  };
 
   return (
     <div>
-      <label htmlFor="city-select">Select a city:</label>
-      <select id="city-select" data-cy="city-dropdown" onChange={handleCityChange}>
-        <option key='default-empty' value=''>
-          Select a city
-        </option>
+      <label htmlFor="city-select" className="select-label">Select a city:</label>
+      <select id="city-select" onChange={handleCityChange} className="select-input">
         <option key='brighton' value='brighton'>
           Brighton, UK
         </option>
@@ -41,11 +37,8 @@ function LocationsForm({ setResponseData }) {
           Santorini, Greece
         </option>
       </select>
-      {selectedCity && (
-        <button onClick={() => handleGenerateClick(selectedCity)}>Generate</button>
-      )}
-      {/* <button onClick={() => handleGenerateClick(selectedCity)}>Generate</button> */}
-      </div>
+      <button onClick={handleGenerateClick} className="generate-button">Generate</button>
+    </div>
   );
 }
 

@@ -19,6 +19,7 @@ a {
   color: #646cff;
   text-decoration: inherit;
 }
+
 a:hover {
   color: #535bf2;
 }
@@ -29,6 +30,17 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  background-size: cover;
+  animation: changeBG 12s infinite;
+  background-image: url('/beach.jpg');
+}
+
+@keyframes changeBG {
+  0% { background-image: url('/beach1.jpg'); }
+  25% { background-image: url('/relax.jpg'); }
+  50% { background-image: url('/paris.jpg'); }
+  75% { background-image: url('/nyc.jpg'); }
+  100% { background-image: url('/vnbeach.jpg'); }
 }
 
 h1 {
@@ -47,9 +59,11 @@ button {
   cursor: pointer;
   transition: border-color 0.25s;
 }
+
 button:hover {
   border-color: #646cff;
 }
+
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
@@ -60,10 +74,12 @@ button:focus-visible {
     color: #213547;
     background-color: #ffffff;
   }
+
   a:hover {
     color: #747bff;
   }
+
   button {
-    background-color: #f9f9f9;
+    background-color: #f4faec;
   }
 }
