@@ -12,10 +12,13 @@ function UserSelection({ setResponseData }) {
   }
 
   const handleGenerateClick = () => {
+    const activitiesParameter = preferredActivities.join(',').toLowerCase();
+
     console.log(selectedCity);
     console.log(preferredActivities);
+    console.log(activitiesParameter);
 
-    fetch(`http://localhost:3000/weather/?city=${selectedCity}`)
+    fetch(`http://localhost:3000/weather/?city=${selectedCity}&activities=${activitiesParameter}`)
     .then(response => response.json())
     .then(data => setResponseData(data.daily))
     .catch(error => console.error(error));
