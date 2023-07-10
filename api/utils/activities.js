@@ -2,31 +2,37 @@ let userRanking = ["beach", "eating", "sightseeing", "sports", "museums", "shopp
 
 const activities = {
   "beach": {
-    "type": "outdoor",
-    "minTemp": 20,
+    //"type": "outdoor",
+    "optimalConditions": [800, 801],
+    //"minTemp": 20,
     "ranking": userRanking.indexOf("beach"),
   },
   "sightseeing": {
-    "type": "outdoor",
-    "minTemp": 13,
+    //"type": "outdoor",
+    "optimalConditions": [800, 801, 802, 803],
+    //"minTemp": 13,
     "ranking": userRanking.indexOf("sightseeing"),
   },
   "sports": {
-    "type": "outdoor",
-    "minTemp": 12,
-    "maxTemp": 30,
+    //"type": "outdoor",
+    "optimalConditions": [800, 801, 802, 803],
+    // "minTemp": 12,
+    // "maxTemp": 30,
     "ranking": userRanking.indexOf("sports"),
   },
   "museums": {
-    "type": "indoor",
+    //"type": "indoor",
+    "optimalConditions": [8, 3, 5, 6],
     "ranking": userRanking.indexOf("museums"),
   },
   "shopping": {
-    "type": "indoor",
+    //"type": "indoor",
+    "optimalConditions": [8, 3, 5, 6],
     "ranking": userRanking.indexOf("shopping"),
   },
   "eating": {
-    "type": "indoor",
+    //"type": "indoor",
+    "optimalConditions": [8, 3, 5, 6],
     "ranking": userRanking.indexOf("eating"),
   },
 };
