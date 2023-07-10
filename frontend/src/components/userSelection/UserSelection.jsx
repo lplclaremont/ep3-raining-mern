@@ -18,14 +18,14 @@ function UserSelection({ setResponseData }) {
     if (activitiesParameter != []) {
       url += `&activities=${activitiesParameter}`
     }
+    
     console.log(selectedCity);
     console.log(preferredActivities);
     console.log(activitiesParameter);
 
-    fetch(url)
-    .then(response => response.json())
-    .then(data => setResponseData(data.daily))
-    .catch(error => console.error(error));
+    fetch(url).then(response => response.json())
+      .then(data => setResponseData(data.daily))
+      .catch(error => console.error(error));
   }
 
   return (
