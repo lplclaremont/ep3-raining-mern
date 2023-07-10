@@ -1,14 +1,27 @@
+<<<<<<< HEAD:frontend/src/components/locationsForm/LocationsForm.jsx
 import { useState } from 'react';
 import '../locationsForm/LocationsForm.css';
+=======
+// file: frontend/src/components/locationsForm/LocationsForm.jsx
 
-function LocationsForm({ setResponseData }) {
+import { useState } from 'react'
+import ActivityContainer from '../activityContainer/ActivityContainer';
+>>>>>>> origin/main:frontend/src/components/userSelection/UserSelection.jsx
+
+function UserSelection({ setResponseData }) {
   const [selectedCity, setSelectedCity] = useState('');
+<<<<<<< HEAD:frontend/src/components/locationsForm/LocationsForm.jsx
 
+=======
+  const [preferredActivities, setPreferredActivities] = useState([]);
+  
+>>>>>>> origin/main:frontend/src/components/userSelection/UserSelection.jsx
   const handleCityChange = (event) => {
     setSelectedCity(event.target.value);
   };
 
   const handleGenerateClick = () => {
+<<<<<<< HEAD:frontend/src/components/locationsForm/LocationsForm.jsx
     console.log(selectedCity);
 
     fetch(`http://localhost:3000/weather/?city=${selectedCity}`)
@@ -16,6 +29,23 @@ function LocationsForm({ setResponseData }) {
       .then(data => setResponseData(data.daily))
       .catch(error => console.error(error));
   };
+=======
+    const activitiesParameter = preferredActivities.join(',').toLowerCase();
+    let url = `http://localhost:3000/weather/?city=${selectedCity}`
+
+    if (activitiesParameter != []) {
+      url += `&activities=${activitiesParameter}`
+    }
+    
+    console.log(selectedCity);
+    console.log(preferredActivities);
+    console.log(activitiesParameter);
+
+    fetch(url).then(response => response.json())
+      .then(data => setResponseData(data.daily))
+      .catch(error => console.error(error));
+  }
+>>>>>>> origin/main:frontend/src/components/userSelection/UserSelection.jsx
 
   return (
     <div>
@@ -71,6 +101,7 @@ function LocationsForm({ setResponseData }) {
         Athens, Greek
         </option>
       </select>
+      <ActivityContainer preferredActivities={ preferredActivities} setPreferredActivities={ setPreferredActivities} />
       {selectedCity && (
       <button onClick={handleGenerateClick} className="generate-button">Generate</button>
       )}
@@ -78,4 +109,8 @@ function LocationsForm({ setResponseData }) {
   );
 }
 
+<<<<<<< HEAD:frontend/src/components/locationsForm/LocationsForm.jsx
 export default LocationsForm;
+=======
+export default UserSelection;
+>>>>>>> origin/main:frontend/src/components/userSelection/UserSelection.jsx

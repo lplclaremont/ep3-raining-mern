@@ -2,7 +2,7 @@ import { useState } from 'react'
 // import reactLogo from './assets/react.svg'
 // import viteLogo from '/vite.svg'
 import './App.css'
-import LocationsForm from './components/locationsForm/LocationsForm';
+import UserSelection from './components/userSelection/UserSelection';
 import Itinerary  from './components/itinerary/Itinerary';
 
 function App() {
@@ -20,8 +20,8 @@ function App() {
         </a> */}
       </div>
       <h1>WeatherWhisper App</h1>
-      <LocationsForm setResponseData={setResponseData} />
-      <Itinerary responseData={responseData} />
+      <UserSelection setResponseData={ setResponseData }/>
+      <Itinerary responseData={ responseData }/>
     </>
   );  
 }
