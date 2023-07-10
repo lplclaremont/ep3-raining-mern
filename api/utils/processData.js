@@ -14,6 +14,7 @@ const processData = (data) => {
           id: data.daily[i].weather[0].id,
           main: data.daily[i].weather[0].main,
           description: data.daily[i].weather[0].description,
+          icon: data.daily[i].weather[0].icon,
         },
       ],
       clouds: data.daily[i].clouds,
@@ -21,7 +22,7 @@ const processData = (data) => {
     };
 
     processedData.daily.push(dailyData);
-  };
+  }
 
   return processedData;
 };
