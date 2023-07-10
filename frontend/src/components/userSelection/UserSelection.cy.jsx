@@ -1,8 +1,8 @@
-import LocationsForm from './LocationsForm'
+import UserSelection from './UserSelection'
 
-describe("LocationsForm", () => {
+describe("UserSelection", () => {
   it('renders a dropdown with city choices', () => {
-    cy.mount(<LocationsForm />)
+    cy.mount(<UserSelection />)
     cy.get('[data-cy="city-dropdown"]').should('contain.text', "Brighton, UK")
     cy.get('[data-cy="city-dropdown"]').should('contain.text', "Valencia, Spain")
   })
@@ -15,7 +15,7 @@ describe("LocationsForm", () => {
     }
     ).as('getWeather');
   
-    cy.mount(<LocationsForm />);
+    cy.mount(<UserSelection />);
   
     cy.get('[data-cy=city-dropdown]').select('valencia');
   
