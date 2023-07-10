@@ -3,7 +3,7 @@ const activities = require('../../utils/activities')
 
 describe('#recommendActivities', ()=>{
     let mockProcessedWeatherData;
-    let activities;
+    //let activities;
     beforeEach(() => {
         mockProcessedWeatherData = {
             "lat": 0.1,
@@ -106,12 +106,13 @@ describe('#recommendActivities', ()=>{
 
     });
 
-    test('adds a indoor activity to a rainy day', () => {
+    test('checking include search works', () => {
         result = recommendActivities(mockProcessedWeatherData, activities);
-        expect(result.daily[0].activity).toEqual("museums")
+        console.log(result.daily[2].activity);
+        expect(result.daily[2].activity).toEqual("beach");
     })
 
-    xtest('adds a outdoor activity to a non-rainy day', () => {
+    test('adds a outdoor activity to a clear day that is not the hottest', () => {
         result = recommendActivities(mockProcessedWeatherData, activities);
         expect(result.daily[1].activity).toEqual("sightseeing")
     })
