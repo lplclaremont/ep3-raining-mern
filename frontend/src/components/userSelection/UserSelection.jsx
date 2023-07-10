@@ -1,35 +1,19 @@
-<<<<<<< HEAD:frontend/src/components/locationsForm/LocationsForm.jsx
-import { useState } from 'react';
-import '../locationsForm/LocationsForm.css';
-=======
+
 // file: frontend/src/components/locationsForm/LocationsForm.jsx
 
-import { useState } from 'react'
+import { useState } from 'react';
 import ActivityContainer from '../activityContainer/ActivityContainer';
->>>>>>> origin/main:frontend/src/components/userSelection/UserSelection.jsx
 
 function UserSelection({ setResponseData }) {
   const [selectedCity, setSelectedCity] = useState('');
-<<<<<<< HEAD:frontend/src/components/locationsForm/LocationsForm.jsx
-
-=======
   const [preferredActivities, setPreferredActivities] = useState([]);
   
->>>>>>> origin/main:frontend/src/components/userSelection/UserSelection.jsx
   const handleCityChange = (event) => {
     setSelectedCity(event.target.value);
   };
 
   const handleGenerateClick = () => {
-<<<<<<< HEAD:frontend/src/components/locationsForm/LocationsForm.jsx
-    console.log(selectedCity);
 
-    fetch(`http://localhost:3000/weather/?city=${selectedCity}`)
-      .then(response => response.json())
-      .then(data => setResponseData(data.daily))
-      .catch(error => console.error(error));
-  };
-=======
     const activitiesParameter = preferredActivities.join(',').toLowerCase();
     let url = `http://localhost:3000/weather/?city=${selectedCity}`
 
@@ -45,7 +29,6 @@ function UserSelection({ setResponseData }) {
       .then(data => setResponseData(data.daily))
       .catch(error => console.error(error));
   }
->>>>>>> origin/main:frontend/src/components/userSelection/UserSelection.jsx
 
   return (
     <div>
@@ -109,8 +92,4 @@ function UserSelection({ setResponseData }) {
   );
 }
 
-<<<<<<< HEAD:frontend/src/components/locationsForm/LocationsForm.jsx
-export default LocationsForm;
-=======
 export default UserSelection;
->>>>>>> origin/main:frontend/src/components/userSelection/UserSelection.jsx

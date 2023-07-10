@@ -1,3 +1,5 @@
+//file: frontend/src/components/ActivityContainer/ActivityContainer.jsx
+
 import Activity from '../activity/Activity';
 
 function ActivityContainer({ preferredActivities, setPreferredActivities }) {
