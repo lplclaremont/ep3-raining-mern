@@ -25,10 +25,10 @@ function LocationsForm({ setResponseData }) {
   return (
     <div>
       <label htmlFor="city-select">Select a city:</label>
-      <select id="city-select" onChange={handleCityChange}>
-        {/* <option key='default-empty' value=''>
+      <select id="city-select" data-cy="city-dropdown" onChange={handleCityChange}>
+        <option key='default-empty' value=''>
           Select a city
-        </option> */}
+        </option>
         <option key='brighton' value='brighton'>
           Brighton, UK
         </option>
@@ -46,7 +46,10 @@ function LocationsForm({ setResponseData }) {
         </option>
       </select>
       <Activities preferredActivities={ preferredActivities} setPreferredActivities={ setPreferredActivities} />
-      <button onClick={() => handleGenerateClick(selectedCity)}>Generate</button>
+      {selectedCity && (
+        <button onClick={() => handleGenerateClick(selectedCity)}>Generate</button>
+      )}
+      {/* <button onClick={() => handleGenerateClick(selectedCity)}>Generate</button> */}
       </div>
   );
 }
