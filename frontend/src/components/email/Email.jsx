@@ -10,11 +10,16 @@ function Email({ responseData }) {
   const handleGenerateClick = () => {
     let url = `http://localhost:3000/email/`
 
+    console.log(responseData)
+
     fetch(url, {
       method: 'post',
+      headers: {
+        'Content-Type': 'application/json',
+      },
       body: JSON.stringify({ 
         emailAddress: emailAddress,
-        itinerary: responseData.daily
+        itinerary: responseData
       })
     }).catch(error => console.error(error));
   }
