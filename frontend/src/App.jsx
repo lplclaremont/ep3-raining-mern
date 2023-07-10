@@ -4,6 +4,8 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import UserSelection from './components/userSelection/UserSelection';
 import Itinerary  from './components/itinerary/Itinerary';
+import Email  from './components/email/Email';
+
 
 function App() {
   const [responseData, setResponseData] = useState([]);
@@ -19,9 +21,10 @@ function App() {
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
       </div>
-      <h1>WeatherWhisper App</h1>
+      <h1>Whatever the Weather</h1>
       <UserSelection setResponseData={ setResponseData }/>
       <Itinerary responseData={ responseData }/>
+      <Email responseData={ responseData }/>
     </>
   );
 }
