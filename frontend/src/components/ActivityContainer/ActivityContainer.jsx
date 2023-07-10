@@ -1,11 +1,10 @@
-import React from 'react';
 import Activity from '../activity/Activity';
 
-function Activities({ preferredActivities, setPreferredActivities }) {
+function ActivityContainer({ preferredActivities, setPreferredActivities }) {
   const activityNames = ['Beach', 'Museums', 'Sports', 'Shopping', 'Eating', 'Sightseeing'];
 
   return (
-    <div>
+    <div className=''>
       {activityNames.map((activityName) => (
         <Activity
           key={activityName}
@@ -18,4 +17,4 @@ function Activities({ preferredActivities, setPreferredActivities }) {
   );
 }
 
-export default Activities;
+export default ActivityContainer;

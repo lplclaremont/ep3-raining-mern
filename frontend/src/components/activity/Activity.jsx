@@ -1,13 +1,8 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import './Activity.css'; 
 
 function Activity({ activityName, preferredActivities, setPreferredActivities }) {
   const [clicked, setClicked] = useState(false);
-
-  useEffect(() => {
-    console.log(clicked);
-    console.log(preferredActivities);
-  }, [preferredActivities]);
 
   const handleClick = () => {
     const newClicked = !clicked;

@@ -1,10 +1,9 @@
 // file: frontend/src/components/locationsForm/LocationsForm.jsx
 
 import { useState } from 'react'
-import Activities from '../activities/Activities';
+import ActivityContainer from '../activityContainer/ActivityContainer';
 
-
-function LocationsForm({ setResponseData }) {
+function UserSelection({ setResponseData }) {
   const [selectedCity, setSelectedCity] = useState('');
   const [preferredActivities, setPreferredActivities] = useState([]);
   
@@ -45,13 +44,12 @@ function LocationsForm({ setResponseData }) {
           Santorini, Greece
         </option>
       </select>
-      <Activities preferredActivities={ preferredActivities} setPreferredActivities={ setPreferredActivities} />
+      <ActivityContainer preferredActivities={ preferredActivities} setPreferredActivities={ setPreferredActivities} />
       {selectedCity && (
         <button onClick={() => handleGenerateClick(selectedCity)}>Generate</button>
       )}
-      {/* <button onClick={() => handleGenerateClick(selectedCity)}>Generate</button> */}
       </div>
   );
 }
 
-export default LocationsForm;
+export default UserSelection;
