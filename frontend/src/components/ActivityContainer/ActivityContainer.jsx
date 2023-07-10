@@ -4,7 +4,7 @@ function ActivityContainer({ preferredActivities, setPreferredActivities }) {
   const activityNames = ['Beach', 'Museums', 'Sports', 'Shopping', 'Eating', 'Sightseeing'];
 
   return (
-    <div className=''>
+    <div className='ActivityContainer'>
       {activityNames.map((activityName) => (
         <Activity
           key={activityName}
