@@ -17,7 +17,7 @@ function UserSelection({ setResponseData }) {
     const activitiesParameter = preferredActivities.join(',').toLowerCase();
     let url = `http://localhost:3000/weather/?city=${selectedCity}`
 
-    if (activitiesParameter != []) {
+    if (activitiesParameter != []) { 
       url += `&activities=${activitiesParameter}`
     }
     
