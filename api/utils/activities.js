@@ -1,31 +1,33 @@
+let userRanking = ["beach", "eating", "sightseeing", "sports", "museums", "shopping" ]
+
 const activities = {
-  "Beach": {
+  "beach": {
     "type": "outdoor",
     "minTemp": 20,
-    "ranking": 1,
+    "ranking": userRanking.indexOf("beach"),
   },
   "sightseeing": {
     "type": "outdoor",
     "minTemp": 13,
-    "ranking": 2,
+    "ranking": userRanking.indexOf("sightseeing"),
   },
   "sports": {
     "type": "outdoor",
     "minTemp": 12,
     "maxTemp": 30,
-    "ranking": 3,
+    "ranking": userRanking.indexOf("sports"),
   },
   "museums": {
     "type": "indoor",
-    "ranking": 4,
+    "ranking": userRanking.indexOf("museums"),
   },
   "shopping": {
     "type": "indoor",
-    "ranking": 5,
+    "ranking": userRanking.indexOf("shopping"),
   },
   "eating": {
     "type": "indoor",
-    "ranking": 6,
+    "ranking": userRanking.indexOf("eating"),
   },
 };
 
