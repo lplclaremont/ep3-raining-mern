@@ -21,6 +21,7 @@ function LocationsForm({ setResponseData }) {
     <div>
       <label htmlFor="city-select" className="select-label">Select a city:</label>
       <select id="city-select" onChange={handleCityChange} className="select-input">
+        <option value="">Select a city:</option>
         <option key='brighton' value='brighton'>
           Brighton, UK
         </option>
@@ -70,8 +71,10 @@ function LocationsForm({ setResponseData }) {
         Athens, Greek
         </option>
       </select>
+      {selectedCity && (
       <button onClick={handleGenerateClick} className="generate-button">Generate</button>
-    </div>
+      )}
+      </div>
   );
 }
 
