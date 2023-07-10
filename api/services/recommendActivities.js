@@ -1,4 +1,4 @@
-const activities = require('../utils/activities');
+//const activities = require('../utils/activities');
 
 const recommendActivities = (processedWeatherData, activities) => {
   let dailyArray = processedWeatherData.daily;
@@ -13,36 +13,44 @@ const recommendActivities = (processedWeatherData, activities) => {
     return b.temp.day - a.temp.day; // Sort by temperature (hot to cold)
   });
 
-  const allActivities = Object.entries(activities)
+  const orderedActivities = Object.entries(activities)
     .sort((a, b) => {
-      return a[1].ranking - b[1].ranking; // Sort by ranking
+      if (a[1].chosen && !b[1].chosen) {
+        return -1
+      } else if (!a[1].chosen && b[1].chosen) {
+        return 1
+      } else {
+        return 0
+      }
     })
     .map(([activity]) => activity);
 
+    console.log(orderedActivities)
+
   dailyArray.forEach((day) => {
-    const index = allActivities.findIndex(
+    const index = orderedActivities.findIndex(
       (activity) => activities[activity].optimalConditions.includes(day.weather[0].id)
     )
-    day.activity = allActivities[index]
-    allActivities.splice(index, 1);
+    day.activity = orderedActivities[index]
+    orderedActivities.splice(index, 1);
 
-    // if (day.weather[0].id >= 800 && (day.temp.day >= activities[allActivities[0]].minTemp)) {
-    //   day.activity = allActivities[0];
-    //   allActivities.shift();
-    // }else if (day.weather[0].id >= 800 && (day.temp.day < activities[allActivities[0]].minTemp)) {
-    //   const suffTempIndex = allActivities.findIndex(
-    //     (activity) => activities[activity].minTemp >= day.temp.day //
+    // if (day.weather[0].id >= 800 && (day.temp.day >= activities[orderedActivities[0]].minTemp)) {
+    //   day.activity = orderedActivities[0];
+    //   orderedActivities.shift();
+    // }else if (day.weather[0].id >= 800 && (day.temp.day < activities[orderedActivities[0]].minTemp)) {
+    //   const suffTempIndex = orderedActivities.findIndex(
+    //     (activity) => activities[activity].minTemp >= day.temp.day //checks through the activities for the first where the type is indoor
     //   );
-    //   day.activity = allActivities[suffTempIndex];
-    //   allActivities.splice(suffTempIndex, 1);     
+    //   day.activity = orderedActivities[suffTempIndex];
+    //   orderedActivities.splice(suffTempIndex, 1);     
     // }else {
-    //   allActivities.forEach((activity) => {
+    //   orderedActivities.forEach((activity) => {
     //     if(activities[activity].type == "indoor"){
-    //       day.activity = allActivities[0]
+    //       day.activity = orderedActivities[0]
     //     }
     //     }
     //   )
-    //   allActivities.pop() // removes the last activity i.e. the indoor activity chosen, with the best indoor ranking
+    //   orderedActivities.pop() // removes the last activity i.e. the indoor activity chosen, with the best indoor ranking
     // }
   });
 
@@ -72,20 +80,20 @@ module.exports = recommendActivities;
 //     return b.temp.day - a.temp.day; // Sort by temperature (hot to cold)
 //   });
 
-//   const allActivities = Object.entries(activities)
+//   const orderedActivities = Object.entries(activities)
 //     .sort((a, b) => a[1].ranking - b[1].ranking)
 //     .map(([activity]) => activity);//removes the objects, and converts into array of just activities
 
 //   dailyArray.forEach((day) => {
 //     if (day.weather[0].main !== 'Rain') {
-//       day.activity = allActivities.shift();
+//       day.activity = orderedActivities.shift();
 //     } else {
-//       const indoorActivityIndex = allActivities.findIndex(
+//       const indoorActivityIndex = orderedActivities.findIndex(
 //         (activity) => activities[activity].type === 'indoor' //checks through the activities for the first where the type is indoor
 //       );
 //       //above find the index
-//       day.activity = allActivities[indoorActivityIndex]; 
-//       allActivities.splice(indoorActivityIndex, 1); //removes the activity from the allactivities array
+//       day.activity = orderedActivities[indoorActivityIndex]; 
+//       orderedActivities.splice(indoorActivityIndex, 1); //removes the activity from the orderedActivities array
 //     }
 //   });
 

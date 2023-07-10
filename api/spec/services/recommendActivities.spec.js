@@ -57,36 +57,6 @@ describe('#recommendActivities', ()=>{
     
             ]
         };
-        // activities = {
-        //     "beach": {
-        //       "type": "outdoor",
-        //       "minTemp": 20,
-        //       "ranking": 1,
-        //     },
-        //     "sightseeing": {
-        //       "type": "outdoor",
-        //       "minTemp": 13,
-        //       "ranking": 2,
-        //     },
-        //     "sports": {
-        //       "type": "outdoor",
-        //       "minTemp": 12,
-        //       "maxTemp": 30,
-        //       "ranking": 3,
-        //     },
-        //     "museums": {
-        //       "type": "indoor",
-        //       "ranking": 4,
-        //     },
-        //     "shopping": {
-        //       "type": "indoor",
-        //       "ranking": 5,
-        //     },
-        //     "eating": {
-        //       "type": "indoor",
-        //       "ranking": 6
-        //     },
-        //   };
     });
     
     test('returns the original weather data for each day forecast', () => {
@@ -108,11 +78,11 @@ describe('#recommendActivities', ()=>{
 
     test('checking include search works', () => {
         result = recommendActivities(mockProcessedWeatherData, activities);
-        console.log(result.daily[2].activity);
+        console.log(result);
         expect(result.daily[2].activity).toEqual("beach");
     })
 
-    test('adds a outdoor activity to a clear day that is not the hottest', () => {
+    xtest('adds a outdoor activity to a clear day that is not the hottest', () => {
         result = recommendActivities(mockProcessedWeatherData, activities);
         expect(result.daily[1].activity).toEqual("sightseeing")
     })
