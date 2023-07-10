@@ -18,7 +18,7 @@ function Activity({ activityName, preferredActivities, setPreferredActivities })
   }
   
   return(
-    <button className={`button-activity ${clicked ? 'active' : ''}`} onClick={handleClick}>
+    <button data-cy="activity-button" className={`button-activity ${clicked ? 'active' : ''}`} onClick={handleClick}>
       {activityName}
     </button>
   );
