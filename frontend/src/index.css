@@ -36,10 +36,12 @@ body {
 }
 
 @keyframes changeBG {
-  0% { background-image: url('/beach1.jpg'); }
+  0% { background-image: url('/jpshop.jpg'); }
   25% { background-image: url('/relax.jpg'); }
   50% { background-image: url('/paris.jpg'); }
-  75% { background-image: url('/nyc.jpg'); }
+  60% { background-image: url('/beach1.jpg'); }
+  70% { background-image: url('/nyc.jpg'); }
+  80% { background-image: url('/paris_musuem.jpg'); }
   100% { background-image: url('/vnbeach.jpg'); }
 }
 
