@@ -4,7 +4,7 @@ const activities = {
     "chosen": false,
   },
   "sightseeing": {
-    "optimalConditions": [800, 801, 802, 803],
+    "optimalConditions": [800, 801, 802, 803, 804],
     "chosen": false,
   },
   "sports": {
