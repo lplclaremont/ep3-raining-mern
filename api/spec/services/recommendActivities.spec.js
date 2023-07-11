@@ -163,11 +163,10 @@ describe('#recommendActivities', ()=>{
             mockProcessedWeatherData.daily[0].weather[0].id = 800;
             mockProcessedWeatherData.daily[0].weather[0].main = "Clear";
             mockProcessedWeatherData.daily[0].weather[0].description = "clear sky";
-            // update the mock to switch the ranking of an indoor activity vs an outdoor activity
-            activities.sports.ranking = 4;
-            activities.museums.ranking = 3;
+            // the userSelected array contains just "museums", if they only clicked that
+            let userSelected = ["museums"]
     
-            result = recommendActivities(mockProcessedWeatherData, activities, ["museums"]);
+            result = recommendActivities(mockProcessedWeatherData, activities, userSelected);
             //expect highest temp day to assign 'Museums' as user has selected it
             expect(result.daily[2].activity).toEqual("museums")
             //expect second highest temp day to assign 'beach'
