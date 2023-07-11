@@ -6,10 +6,8 @@ const weatherController = {
   getWeather: (req, res) => {
     let city = req.query.city;
 
-    let fromDay = 0;
-    let toDay = 2;
-    // let fromDay = req.query.fromDay;
-    // let toDay = req.query.toDay;
+    let fromDay = req.query.fromDay === undefined ? 0 : req.query.fromDay;
+    let toDay = req.query.toDay === undefined ? 7 : req.query.toDay;
 
     let lat = cityLookup[city].lat;
     let lon = cityLookup[city].lon;
