@@ -9,8 +9,6 @@ function Day({ day }) {
 
   const roundedTemperature = day.temp.day.toFixed();
 
-  console.log(day);
-
   const iconUrl = `http://openweathermap.org/img/wn/${day.weather[0].icon}.png`;
 
   return (
