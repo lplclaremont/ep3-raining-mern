@@ -13,3 +13,8 @@
 .email-container p {
   margin-bottom: 0px; 
 }
+
+.email-container button {
+  margin-left: 10px; 
+  font-size: 12px; 
+}
