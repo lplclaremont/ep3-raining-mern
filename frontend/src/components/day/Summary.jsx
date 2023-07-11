@@ -15,7 +15,7 @@ function Summary({ temperature, weather, activities }) {
       } else if (temperature > 18) {
         summary += `don't forget your umbrella if you're planning for ${activities}!`;
       } else {
-        summary += `it is a cold, rainy day - perfec for ${activities}!`;
+        summary += `it is a cold, rainy day - perfect for ${activities}!`;
       }
     } else {
       summary += `the weather is unpredictable, but it's still a good day for ${activities}!`;
