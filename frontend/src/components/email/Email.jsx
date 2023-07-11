@@ -2,7 +2,7 @@ import { useState } from 'react'
 import './Email.css'; 
 
 function validateEmail(email) {
-  const emailRegex = /^[^s@<>]+@[^s@<>]+.[^s@<>]+$/;
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return emailRegex.test(email);
 }
 
@@ -48,8 +48,8 @@ function Email({ responseData }) {
       {responseData.length > 0 && (
         <>
           <p>Want a copy of your itinerary? Add your email address here:</p>
-          <input type='email' onChange={handleEmailChange} required></input>
-          <button className={`button-email ${clicked ? 'clicked' : ''}`} onClick={handleGenerateClick}> {clicked ? 'Email Sent!':'Send Email'}</button>
+          <input data-cy="email-input" type='email' onChange={handleEmailChange} required></input>
+          <button data-cy="email-button" className={`button-email ${clicked ? 'clicked' : ''}`} onClick={handleGenerateClick}> {clicked ? 'Email Sent!':'Send Email'}</button>
           <p>{incorrectEmail ? 'Please enter a valid email address' : ''}</p>
         </>
       )}
