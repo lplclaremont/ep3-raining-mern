@@ -2,12 +2,13 @@
 
 import { useState } from 'react'
 import ActivityContainer from '../activityContainer/ActivityContainer';
+import DateRange from '../dateRange/DateRange';
 
 function UserSelection({ setResponseData }) {
   const [selectedCity, setSelectedCity] = useState('');
   const [preferredActivities, setPreferredActivities] = useState([]);
   const [fromDay, setFromDay] = useState(0);
-  const [toDay, setToDay] = useState(7);
+  const [toDay, setToDay] = useState(1);
   
   const handleCityChange = (event) => {
     setSelectedCity(event.target.value);
@@ -96,15 +97,7 @@ function UserSelection({ setResponseData }) {
       </select>
       <ActivityContainer preferredActivities={ preferredActivities} setPreferredActivities={ setPreferredActivities} />
       
-      <label>
-        Start date:
-        <input type="date"  min='2023-07-11' max='2023-07-18'/>
-      </label>
-
-      <label>
-        End date:
-        <input type="date" min='2023-07-12' max='2023-07-18'/>
-      </label>
+      <DateRange setFromDay={setFromDay} setToDay={setToDay}/>
 
       {selectedCity && (
         <button onClick={() => handleGenerateClick(selectedCity)}>Generate</button>
