@@ -1,11 +1,16 @@
 const processData = (data, fromDay, toDay) => {
-  const processedData = {
+  let processedData = {
     lat: data.lat,
     lon: data.lon,
     daily: [],
   };
+  
+  // ++ coerces toDay into a numeric, and then increments
+  toDay++;
 
-  for (let i = fromDay; i < (toDay + 1); i++) {
+  for (let i = fromDay; i < toDay; i++) {
+    console.log(i);
+
     const dailyData = {
       dt: data.daily[i].dt,
       temp: { day: data.daily[i].temp.day },

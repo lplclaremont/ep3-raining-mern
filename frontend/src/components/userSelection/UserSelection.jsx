@@ -6,6 +6,8 @@ import ActivityContainer from '../activityContainer/ActivityContainer';
 function UserSelection({ setResponseData }) {
   const [selectedCity, setSelectedCity] = useState('');
   const [preferredActivities, setPreferredActivities] = useState([]);
+  const [fromDay, setFromDay] = useState(0);
+  const [toDay, setToDay] = useState(7);
   
   const handleCityChange = (event) => {
     setSelectedCity(event.target.value);
@@ -17,6 +19,14 @@ function UserSelection({ setResponseData }) {
 
     if (activitiesParameter != []) {
       url += `&activities=${activitiesParameter}`
+    }
+
+    if (fromDay !== undefined) {
+      url += `&fromDay=${fromDay}`
+    }
+
+    if (toDay !== undefined) {
+      url += `&toDay=${toDay}`
     }
     
     console.log(selectedCity);
