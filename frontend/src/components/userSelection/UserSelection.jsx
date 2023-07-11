@@ -8,7 +8,7 @@ function UserSelection({ setResponseData }) {
   const [selectedCity, setSelectedCity] = useState('');
   const [preferredActivities, setPreferredActivities] = useState([]);
   const [fromDay, setFromDay] = useState(0);
-  const [toDay, setToDay] = useState(1);
+  const [toDay, setToDay] = useState(0);
   
   const handleCityChange = (event) => {
     setSelectedCity(event.target.value);
@@ -16,19 +16,9 @@ function UserSelection({ setResponseData }) {
 
   const handleGenerateClick = () => {
     const activitiesParameter = preferredActivities.join(',').toLowerCase();
-    let url = `http://localhost:3000/weather/?city=${selectedCity}`
+    let url = `http://localhost:3000/weather/?city=${selectedCity}&fromDay=${fromDay}&toDay=${toDay}`
 
-    if (activitiesParameter != []) {
-      url += `&activities=${activitiesParameter}`
-    }
-
-    if (fromDay !== undefined) {
-      url += `&fromDay=${fromDay}`
-    }
-
-    if (toDay !== undefined) {
-      url += `&toDay=${toDay}`
-    }
+    if (activitiesParameter != []) url += `&activities=${activitiesParameter}`;
     
     console.log(selectedCity);
     console.log(preferredActivities);

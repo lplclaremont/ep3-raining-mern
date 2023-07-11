@@ -1,6 +1,6 @@
 import { useState } from "react";
 import DatePicker from "react-datepicker";
-import { addDays } from "date-fns";
+import { addDays, differenceInCalendarDays } from "date-fns";
 
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -12,14 +12,10 @@ function DateRange({ setFromDay, setToDay }) {
     const [start, end] = dates;
     setStartDate(start);
     setEndDate(end);
+
+    setFromDay(differenceInCalendarDays(start, new Date()));
+    setToDay(differenceInCalendarDays(end, new Date()));
   };
-
-  console.log(startDate)
-  console.log(endDate)
-
-  const handleDayChange = (setFromDay, setToDay, startDate, endDate) => {
-    // update the parent state? Or integrate this into the onDayChange function?
-  }
 
   return (
     <DatePicker
