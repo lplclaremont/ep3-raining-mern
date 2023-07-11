@@ -2,7 +2,7 @@ import Day from "../day/Day";
 
 function Itinerary({ responseData }) {
   return(
-    <div>
+    <div data-cy="itinerary">
       {responseData.map((day) => <Day day={day} key={day.dt}/>)}
     </div>
     )
