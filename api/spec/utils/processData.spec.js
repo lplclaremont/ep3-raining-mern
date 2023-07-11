@@ -5,7 +5,7 @@ const processData = require('../../utils/processData');
 const dummyDay = {
   dt: 1625624400,
   temp: { day: 25.5 },
-  weather: [{ id: 800, main: 'Clear', description: 'Clear sky' }],
+  weather: [{ id: 800, main: 'Clear', description: 'Clear sky', icon: '04d' }],
   clouds: 10,
   pop: 0.2,
 };
@@ -22,9 +22,9 @@ describe('processData', () => {
       lat: 10.1234,
       lon: -20.5678,
       daily: [
-        { dt: 1625624400, temp: { day: 25.5 }, weather: [{ id: 800, main: 'Clear', description: 'Clear sky' }], clouds: 10, pop: 0.2 },
-        { dt: 1625624400, temp: { day: 25.5 }, weather: [{ id: 800, main: 'Clear', description: 'Clear sky' }], clouds: 10, pop: 0.2 },
-        { dt: 1625624400, temp: { day: 25.5 }, weather: [{ id: 800, main: 'Clear', description: 'Clear sky' }], clouds: 10, pop: 0.2 },
+        { dt: 1625624400, temp: { day: 25.5 }, weather: [{ id: 800, main: 'Clear', description: 'Clear sky', icon: '04d' }], clouds: 10, pop: 0.2 },
+        { dt: 1625624400, temp: { day: 25.5 }, weather: [{ id: 800, main: 'Clear', description: 'Clear sky', icon: '04d' }], clouds: 10, pop: 0.2 },
+        { dt: 1625624400, temp: { day: 25.5 }, weather: [{ id: 800, main: 'Clear', description: 'Clear sky', icon: '04d' }], clouds: 10, pop: 0.2 },
       ],
     };
 
