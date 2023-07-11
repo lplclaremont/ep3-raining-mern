@@ -12,8 +12,15 @@ function Day ({ day }) {
   const iconUrl = `http://openweathermap.org/img/wn/${day.weather[0].icon}.png`;
 
   const getSummary = () => {
-    let summary = `${roundedTemperature}°C and ${day.weather[0].description}, great day for the ${day.activity} `;
-     return summary
+    let summary = `${roundedTemperature}°C and ${day.weather[0].description}, `;
+    if (day.weather[0].main === 'Clear'|| day.weather[0].main === 'Clouds'){
+      summary += `great day for the ${day.activity}`
+    } else if (day.weather[0].main === 'Rain') {
+      summary += `perfect day for ${day.activity}`
+    } else {
+      summary += `good day for ${day.activity}`
+    }
+    return summary
   }
   return (
     <article className="day" key={day.dt}>
