@@ -53,7 +53,7 @@ function Email({ responseData }) {
           <p>Send a copy of your itinerary:</p>
           <input data-cy="email-input" className="email-input" value={emailAddress} type='email' placeholder="Enter your email address here" onChange={handleEmailChange} required></input>
           <button data-cy="email-button" className={`button-email ${clicked ? 'clicked' : ''}`} onClick={handleGenerateClick}> {clicked ? 'Email Sent!':'Send Email'}</button>
-          <p>{incorrectEmail ? 'Please enter a valid email address' : ''}</p>
+          <p className="error-message">{incorrectEmail ? 'Please enter a valid email address' : ''}</p>
         </>
       )}
     </div>
