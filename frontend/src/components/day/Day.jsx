@@ -1,4 +1,6 @@
-function Day ({ day }) {
+import Summary from "./Summary";
+
+function Day({ day }) {
   const formattedDate = new Date(day.dt * 1000).toLocaleString("en-GB", {
     weekday: "long",
     day: "numeric",
@@ -8,7 +10,7 @@ function Day ({ day }) {
   const roundedTemperature = day.temp.day.toFixed();
 
   console.log(day);
-  
+
   const iconUrl = `http://openweathermap.org/img/wn/${day.weather[0].icon}.png`;
 
   return (
@@ -20,9 +22,13 @@ function Day ({ day }) {
       </div>
       <div className="weather">{day.weather[0].description}</div>
       <div className="activity">{day.activity}</div>
+      <Summary
+        temperature={roundedTemperature}
+        weather={day.weather[0]}
+        activities={day.activity}
+      />
     </article>
-  )
-
+  );
 }
 
 export default Day;
