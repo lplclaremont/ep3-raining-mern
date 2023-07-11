@@ -1,3 +1,14 @@
+const nodemailer = require('nodemailer');
+
+const transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: 'fromwhatevertheweather@gmail.com',
+    pass: 'shqbbwkeyvfagvjd'
+  }
+});
+
+
 
 const emailController = {
   sendEmail: (req, res) => {
@@ -8,10 +19,23 @@ const emailController = {
     console.log(emailAddress)
     console.log(itinerary)
 
+    const mailOptions = {
+      from: 'fromwhatevertheweather@gmail.com',
+      to: emailAddress,
+      subject: 'Itinerary',
+      text: 'Email content'
+    };
+    
+    transporter.sendMail(mailOptions, function(error, info){
+      if (error) {
+     console.log(error);
+      } else {
+        console.log('Email sent: ' + info.response);
+        // do something useful
+      }
+    });
 
-    fetch(`https://uselessfacts.jsph.pl/random`)
-      // .then(response => console.log(response))
-      .then(response => res.status(200))
+    
   }
 };
 
