@@ -1,3 +1,4 @@
+const formatDate = require('../utils/formatDate')
 const nodemailer = require('nodemailer');
 
 const transporter = nodemailer.createTransport({
@@ -9,21 +10,25 @@ const transporter = nodemailer.createTransport({
 });
 
 
-
 const emailController = {
   sendEmail: (req, res) => {
     let emailAddress = req.body.emailAddress;
     let itinerary = req.body.itinerary;
 
-    const apiKey = res.locals.apiKey;
     console.log(emailAddress)
     console.log(itinerary)
+
+    let emailBody = `Your Itinerary from Whatever The Weather\n`
+    itinerary.forEach((day) => {
+      emailBody += `Date: ${formatDate(day.dt)}, Temp: ${day.temp.day.toFixed()}°C, Weather: ${day.weather[0].description}, Recommended activity: ${day.activity}\n `
+    })
+    console.log(emailBody)
 
     const mailOptions = {
       from: 'fromwhatevertheweather@gmail.com',
       to: emailAddress,
       subject: 'Itinerary',
-      text: 'Email content'
+      text: emailBody
     };
     
     transporter.sendMail(mailOptions, function(error, info){
