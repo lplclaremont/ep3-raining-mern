@@ -4,7 +4,7 @@ function ActivityContainer({ preferredActivities, setPreferredActivities }) {
   const activityNames = ['Beach', 'Museums', 'Sports', 'Shopping', 'Eating', 'Sightseeing'];
 
   return (
-    <div className='ActivityContainer'>
+    <div className='ActivityContainer' data-cy="activity-container">
       {activityNames.map((activityName) => (
         <Activity
           key={activityName}
