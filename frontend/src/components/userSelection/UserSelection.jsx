@@ -95,6 +95,17 @@ function UserSelection({ setResponseData }) {
         </option>
       </select>
       <ActivityContainer preferredActivities={ preferredActivities} setPreferredActivities={ setPreferredActivities} />
+      
+      <label>
+        Start date:
+        <input type="date"  min='2023-07-11' max='2023-07-18'/>
+      </label>
+
+      <label>
+        End date:
+        <input type="date" min='2023-07-12' max='2023-07-18'/>
+      </label>
+
       {selectedCity && (
         <button onClick={() => handleGenerateClick(selectedCity)}>Generate</button>
       )}
