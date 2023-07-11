@@ -1,7 +1,9 @@
 import { useState } from 'react'
+import './Email.css'; 
 
 function Email({ responseData }) {
   const [emailAddress, setEmailAddress] = useState('');
+  const [clicked, setClicked] = useState(false);
 
   const handleEmailChange = (event) => {
     setEmailAddress(event.target.value);
@@ -22,7 +24,11 @@ function Email({ responseData }) {
         itinerary: responseData
       })
     }).catch(error => console.error(error));
+
+    setClicked(true)
+
   }
+
 
   return (
     <div>
@@ -30,12 +36,13 @@ function Email({ responseData }) {
         <>
           <p>Want a copy of your itinerary? Add your email address here:</p>
           <input type='email' onChange={handleEmailChange}></input>
-          <button onClick={handleGenerateClick}>Send Email</button>
+          <button className={`button-email ${clicked ? 'clicked' : ''}`} onClick={handleGenerateClick}> {clicked ? 'Email Sent!':'Send Email'}</button>
         </>
       )}
     </div>
   );
 
 }
+
 
 export default Email;
