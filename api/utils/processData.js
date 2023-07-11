@@ -1,11 +1,11 @@
-const processData = (data) => {
+const processData = (data, fromDay, toDay) => {
   const processedData = {
     lat: data.lat,
     lon: data.lon,
     daily: [],
   };
 
-  for (let i = 0; i < 3; i++) {
+  for (let i = fromDay; i < (toDay + 1); i++) {
     const dailyData = {
       dt: data.daily[i].dt,
       temp: { day: data.daily[i].temp.day },
