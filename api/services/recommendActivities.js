@@ -5,9 +5,8 @@ const recommendActivities = (processedWeatherData, activities, userSelectedActiv
   userSelectedActivities.forEach((activity) => {
     activities[activity].chosen = true
   })
-  console.log(userSelectedActivities)
-  
-  console.log(dailyArray)
+  console.log(activities)
+
   // Sort the weather from best - worst days
   //sortBestWeather(dailyArray)
 
@@ -20,9 +19,9 @@ const recommendActivities = (processedWeatherData, activities, userSelectedActiv
     }
     return b.temp.day - a.temp.day; // Sort by temperature (hot to cold)
   });
+  console.log(dailyArray)
 
   // Get the user's selected activities to front of the list
-  console.log(dailyArray)
   const prioritisedActivities = prioritiseUserSelection(activities)
   // Assign the best activity to best day
   console.log(prioritisedActivities)
@@ -31,7 +30,6 @@ const recommendActivities = (processedWeatherData, activities, userSelectedActiv
 
   dailyArray.sort((a, b) => a.dt - b.dt); // Sort by date (ascending)
   processedWeatherData.daily = dailyArray; // Update daily array with new activity data
-
   return processedWeatherData;
 };
 

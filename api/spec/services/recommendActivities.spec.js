@@ -59,6 +59,10 @@ describe('#recommendActivities', ()=>{
         };
     });
     
+    beforeEach(() => {
+        activities.chosen
+    });
+    //above to clear the chosen boolean field
     describe('with no user activity selection', () => {
         it('returns the original weather data for each day forecast', () => {
             result = recommendActivities(mockProcessedWeatherData, activities, []);
@@ -96,7 +100,28 @@ describe('#recommendActivities', ()=>{
         it('adds the first outdoor activity in the array to the hottest non-rainy day', () => {
             let userSelected = ["museums", "eating", "sightseeing"]
             result = recommendActivities(mockProcessedWeatherData, activities, userSelected);
+            expect(result.daily[0].activity).toEqual("museums")
+            expect(result.daily[1].activity).toEqual("eating")
             expect(result.daily[2].activity).toEqual("sightseeing")
+        })
+
+
+        it('adds the indoor activity in the array even if only one selected', () => {
+            let userSelected = ["eating"]
+            result = recommendActivities(mockProcessedWeatherData, activities, userSelected);
+            expect(result.daily[0].activity).toEqual("eating")
+            expect(result.daily[1].activity).toEqual("sightseeing")
+            expect(result.daily[2].activity).toEqual("beach")
+        })
+
+
+        //test below fails when all test running, but works individually, not sure why - chosen value does get changed
+        it('adds the best activity to the hottest non-rainy day', () => {
+            let userSelected = ["beach","museums", "sightseeing"]
+            result = recommendActivities(mockProcessedWeatherData, activities, userSelected);
+            expect(result.daily[0].activity).toEqual("museums")
+            expect(result.daily[1].activity).toEqual("sightseeing")
+            expect(result.daily[2].activity).toEqual("beach")
         })
 
     })
@@ -109,13 +134,13 @@ describe('#recommendActivities', ()=>{
         mockProcessedWeatherData.daily[2].weather[0].id = 500;
         mockProcessedWeatherData.daily[2].weather[0].main = "Rain";
         mockProcessedWeatherData.daily[2].weather[0].description = "light rain";
-        result = recommendActivities(mockProcessedWeatherData, activities);
-        //expect highest temp day to assign 'Museums'
-        expect(result.daily[2].activity).toEqual("museums")
-        //expect second highest temp day to assign 'shopping'
+
+        let userSelected = ["eating"]
+        result = recommendActivities(mockProcessedWeatherData, activities, userSelected);
+        
         expect(result.daily[0].activity).toEqual("shopping")
-        //expect third highest temp day to assign 'eating'
-        expect(result.daily[1].activity).toEqual("eating")
+        expect(result.daily[1].activity).toEqual("museums")
+        expect(result.daily[2].activity).toEqual("eating")
 
     });
 
