@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState , useEffect } from 'react'
 import './Email.css'; 
 
 function validateEmail(email) {
@@ -37,18 +37,21 @@ function Email({ responseData }) {
     } else {
       setIncorrectEmail(true);
     }
-
-    
-
   }
+
+  useEffect(() => {
+    setClicked(false);
+    setEmailAddress('');
+    setIncorrectEmail(false);
+  }, [responseData]);
 
 
   return (
-    <div>
+    <div className="email-container">
       {responseData.length > 0 && (
         <>
-          <p>Want a copy of your itinerary? Add your email address here:</p>
-          <input data-cy="email-input" type='email' onChange={handleEmailChange} required></input>
+          <p>Send a copy of your itinerary:</p>
+          <input data-cy="email-input" className="email-input" value={emailAddress} type='email' placeholder="Enter your email address here" onChange={handleEmailChange} required></input>
           <button data-cy="email-button" className={`button-email ${clicked ? 'clicked' : ''}`} onClick={handleGenerateClick}> {clicked ? 'Email Sent!':'Send Email'}</button>
           <p>{incorrectEmail ? 'Please enter a valid email address' : ''}</p>
         </>

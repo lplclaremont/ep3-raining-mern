@@ -2,3 +2,14 @@
   background-color: #f3a24b;
   color: #fff;
 }
+
+.email-input {
+  width: 250px; 
+}
+
+.email-container {
+  padding-top: 30px; }
+
+.email-container p {
+  margin-bottom: 0px; 
+}
