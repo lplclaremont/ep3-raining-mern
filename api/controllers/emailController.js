@@ -18,16 +18,16 @@ const emailController = {
     console.log(emailAddress)
     console.log(itinerary)
 
-    let emailBody = `Your Itinerary from Whatever The Weather\n`
+    let emailBody = `Your personal itinerary from Whatever The Weather!\n\n`
     itinerary.forEach((day) => {
-      emailBody += `Date: ${formatDate(day.dt)}, Temp: ${day.temp.day.toFixed()}°C, Weather: ${day.weather[0].description}, Recommended activity: ${day.activity}\n `
+      emailBody += `Date: ${formatDate(day.dt)}, Temp: ${day.temp.day.toFixed()}°C, Weather: ${day.weather[0].description}, Recommended activity: ${day.activity}\n\n `
     })
     console.log(emailBody)
 
     const mailOptions = {
       from: 'fromwhatevertheweather@gmail.com',
       to: emailAddress,
-      subject: 'Itinerary',
+      subject: 'Your itinerary!',
       text: emailBody
     };
     
