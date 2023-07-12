@@ -1,7 +1,7 @@
 const recommendActivities = require('../../services/recommendActivities');
 const activities = require('../../utils/activities')
 
-describe('#recommendActivities', ()=>{
+describe('#recommendActivities for three day itinerary', ()=>{
     let mockProcessedWeatherData;
     beforeEach(() => {
         for (const activity in activities) {
@@ -174,6 +174,148 @@ describe('#recommendActivities', ()=>{
             //expect third highest temp day to assign 'sightseeing'
             expect(result.daily[1].activity).toEqual("sightseeing")
         });
+
+    })
+});
+
+
+describe('#recommendActivities for 8 day itinerary', ()=>{
+    let mockProcessedWeatherData;
+    beforeEach(() => {
+        for (const activity in activities) {
+            activities[activity].chosen = false;
+          }
+
+        mockProcessedWeatherData = {
+            daily: [
+              {
+                dt: 1689134400,
+                temp: { day: 19.56 },
+                weather: [{
+                    id:800,
+                    main:"Clear",
+                    description: "clear sky"
+                }],
+                clouds: 69,
+                pop: 0.36,
+              },
+              {
+                dt: 1689220800,
+                temp: { day: 18.31 },
+                weather: [{ id: 500, main: 'Rain', description: 'light rain', icon: '10d' }],
+                clouds: 82,
+                pop: 0.48,
+              },
+              {
+                dt: 1689307200,
+                temp: { day: 17.54 },
+                weather: [{ id: 500, main: 'Rain', description: 'light rain', icon: '10d' }],
+                clouds: 86,
+                pop: 0.5,
+              },
+              {
+                dt: 1689393600,
+                temp: { day: 19.61 },
+                weather: [{ id: 500, main: 'Rain', description: 'light rain', icon: '10d' }],
+                clouds: 63,
+                pop: 0.45,
+              },
+              {
+                dt: 1689480000,
+                temp: { day: 19.26 },
+                weather: [{ id: 500, main: 'Rain', description: 'light rain', icon: '10d' }],
+                clouds: 59,
+                pop: 0.57,
+              },
+              {
+                dt: 1689566400,
+                temp: { day: 18.99 },
+                weather: [{
+                    id: 802,
+                    main: 'Clouds',
+                    description: 'scattered clouds',
+                    icon: '03d'
+                  }],
+                clouds: 45,
+                pop: 0.25,
+              },
+              {
+                dt: 1689652800,
+                temp: { day: 19.63 },
+                weather: [{ id: 500, main: 'Rain', description: 'light rain', icon: '10d' }],
+                clouds: 44,
+                pop: 0.26,
+              },
+              {
+                dt: 1689739200,
+                temp: { day: 17.68 },
+                weather: [{ id: 500, main: 'Rain', description: 'light rain', icon: '10d' }],
+                clouds: 82,
+                pop: 0.44,
+              }
+            ]
+          }
+    });
+    
+    describe('with no user activity selection', () => {
+        it('adds beach to hottest clear day', () => {
+            result = recommendActivities(mockProcessedWeatherData, activities, []);
+            expect(result.daily[0].activity).toEqual("beach");
+        })
+    
+        it('adds sightseeing to next hottest clear/cloud-only day', () => {
+            result = recommendActivities(mockProcessedWeatherData, activities, []);
+            expect(result.daily[5].activity).toEqual("sightseeing")
+        })
+
+        it('adds shopping to hottest rainy day', () => {
+            result = recommendActivities(mockProcessedWeatherData, activities, []);
+            expect(result.daily[6].activity).toEqual("shopping")
+        })
+        it('suggests activities even when weather is raining every day', () => {
+            for (let i = 0; i < 8; i++) {
+                mockProcessedWeatherData.daily[i].weather[0].id = 500;
+            }
+            result = recommendActivities(mockProcessedWeatherData, activities, []);
+            let anyUndefined = result.daily.some((day)=>{
+                return typeof day.activity === 'undefined'
+            })
+            expect(anyUndefined).toEqual(false)
+        })
+        it('suggests activities when every day is clear weather', () => {
+            for (let i = 0; i < 8; i++) {
+                mockProcessedWeatherData.daily[i].weather[0].id = 800;
+            }
+            result = recommendActivities(mockProcessedWeatherData, activities, []);
+            let anyUndefined = result.daily.some((day)=>{
+                return typeof day.activity === 'undefined'
+            })
+            expect(anyUndefined).toEqual(false)
+        })
+        it('will include beach when every day is clear weather', () => {
+            for (let i = 0; i < 8; i++) {
+                mockProcessedWeatherData.daily[i].weather[0].id = 800;
+            }
+            result = recommendActivities(mockProcessedWeatherData, activities, []);
+            let anyBeachDay = result.daily.some((day)=>{
+                return day.activity === 'beach'
+            })
+            expect(anyBeachDay).toEqual(true)
+        })
+    });
+
+    describe('with user prioritised selections', () => {
+        it('will prioritise users choice, if all indoor activites are chosen beach will not be added to a sunny week', () => {
+            for (let i = 0; i < 8; i++) {
+                mockProcessedWeatherData.daily[i].weather[0].id = 800;
+            }
+            let userSelected = ["art-galleries","spa-trips","cooking-classes","museums", "shopping", "theatres", "libraries", "eating"]
+            result = recommendActivities(mockProcessedWeatherData, activities, userSelected);
+            let anyBeachDay = result.daily.some((day)=>{
+                return day.activity === 'beach'
+            })
+            expect(anyBeachDay).toEqual(false)
+        })
 
     })
 });

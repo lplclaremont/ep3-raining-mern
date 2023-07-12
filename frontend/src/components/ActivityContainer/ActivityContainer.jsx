@@ -1,7 +1,7 @@
 import Activity from '../activity/Activity';
 
 function ActivityContainer({ preferredActivities, setPreferredActivities }) {
-  const activityNames = ['Beach', 'Museums', 'Sports', 'Shopping', 'Eating', 'Sightseeing'];
+  const activityNames = ['Beach', 'Museums', 'Sports', 'Shopping', 'Eating', 'Sightseeing', 'Theatres', 'Art-Galleries', 'Libraries', 'Cooking-Classes', 'Spa-Trips'];
 
   return (
     <div className='ActivityContainer'>
