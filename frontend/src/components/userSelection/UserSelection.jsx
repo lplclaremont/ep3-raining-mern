@@ -5,9 +5,8 @@ import ActivityContainer from '../activityContainer/ActivityContainer';
 import DateRange from '../dateRange/DateRange';
 import citiesOptions from './citiesOptions';
 
-function UserSelection({ setResponseData }) {
+function UserSelection({ setResponseData, preferredActivities, setPreferredActivities }) {
   const [selectedCity, setSelectedCity] = useState('');
-  const [preferredActivities, setPreferredActivities] = useState([]);
   // default behaviour if no date range selected: 3 days including today
   const [fromDay, setFromDay] = useState(0);
   const [toDay, setToDay] = useState(2);
@@ -33,9 +32,7 @@ function UserSelection({ setResponseData }) {
 
   return (
     <div>
-      <label htmlFor="city-select">
-        Select a city:
-      </label>
+      <label htmlFor="city-select">Select a city:</label>
       <select className="city-select" data-cy="city-dropdown" onChange={handleCityChange}>
         {citiesOptions.map((city) => (
           <option key={city.key} value={city.value}>
@@ -43,7 +40,7 @@ function UserSelection({ setResponseData }) {
           </option>
         ))}
       </select>
-      <ActivityContainer preferredActivities={ preferredActivities} setPreferredActivities={ setPreferredActivities} />
+      <ActivityContainer preferredActivities={preferredActivities} setPreferredActivities={setPreferredActivities}/>
       <DateRange setFromDay={setFromDay} setToDay={setToDay}/>
       {selectedCity && (
         <button onClick={() => handleGenerateClick(selectedCity)}>Generate</button>
