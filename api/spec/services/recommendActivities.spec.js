@@ -109,7 +109,7 @@ describe('#recommendActivities', ()=>{
         it('adds the indoor activity in the array even if only one selected', () => {
             let userSelected = ["eating"]
             result = recommendActivities(mockProcessedWeatherData, activities, userSelected);
-            expect(result.daily[0].activity).toEqual("shopping")
+            expect(result.daily[0].activity).toEqual("sightseeing")
             expect(result.daily[1].activity).toEqual("beach")
             expect(result.daily[2].activity).toEqual("eating")
         })
@@ -126,20 +126,20 @@ describe('#recommendActivities', ()=>{
     })
 
     describe('for different weather conditions', () => {
-        it('adds all indoor activities if all three days are rainy, sorted by temperature', ()=> {
+        it('adds sightseeing to light rain and indoor activities to other rain days', ()=> {
             // update the mock to represent three rainy days
             mockProcessedWeatherData.daily[1].weather[0].id = 500;
             mockProcessedWeatherData.daily[1].weather[0].main = "Rain";
             mockProcessedWeatherData.daily[1].weather[0].description = "light rain";
-            mockProcessedWeatherData.daily[2].weather[0].id = 500;
+            mockProcessedWeatherData.daily[2].weather[0].id = 501;
             mockProcessedWeatherData.daily[2].weather[0].main = "Rain";
-            mockProcessedWeatherData.daily[2].weather[0].description = "light rain";
+            mockProcessedWeatherData.daily[2].weather[0].description = "moderate rain";
     
             let userSelected = ["eating"]
             result = recommendActivities(mockProcessedWeatherData, activities, userSelected);
             
-            expect(result.daily[0].activity).toEqual("shopping")
-            expect(result.daily[1].activity).toEqual("museums")
+            expect(result.daily[0].activity).toEqual("sightseeing")
+            expect(result.daily[1].activity).toEqual("shopping")
             expect(result.daily[2].activity).toEqual("eating")
     
         });
