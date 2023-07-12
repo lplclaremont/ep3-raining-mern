@@ -5,13 +5,11 @@ function Itinerary({ responseData, preferredActivities }) {
   const [errorMessage, setErrorMessage] = useState("");
 
   useEffect(() => {
-    const responseActivities = responseData.map((day) => day.activity);
+    const preferredSet = new Set(preferredActivities.map((activity) => activity.toLowerCase()));
+    const recommendedSet = new Set(responseData.map((day) => day.activity));
+    const difference = [...preferredSet].filter(activity => !recommendedSet.has(activity));
 
-    const areAllRecommendationsFulfilled = preferredActivities.every((activity) => {
-      responseActivities.includes(activity)
-    })
-
-    if (!areAllRecommendationsFulfilled) {
+    if (difference.length > 0) {
       setErrorMessage(
         'Sorry, we could not accommodate all of the activities you selected. ' +
           'We hope you still like our recommendations for your trip!'
@@ -19,7 +17,7 @@ function Itinerary({ responseData, preferredActivities }) {
     } else {
       setErrorMessage('');
     }
-  }, [responseData, preferredActivities]);
+  }, [responseData]);
 
   if (responseData.length !== 0) {
     return (
@@ -30,8 +28,6 @@ function Itinerary({ responseData, preferredActivities }) {
         )}
       </div>
     );
-  } else {
-    return <p></p>;
   }
 }
 

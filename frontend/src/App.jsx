@@ -22,9 +22,9 @@ function App() {
         </a>
       </div>
       <h1>Whatever the Weather</h1>
-      <UserSelection setResponseData={setResponseData} setPreferredActivities={setPreferredActivities}/>
+      <UserSelection setResponseData={setResponseData} preferredActivities={preferredActivities} setPreferredActivities={setPreferredActivities}/>
       <Itinerary responseData={responseData} preferredActivities={preferredActivities}/>
-      <Email responseData={ responseData }/>
+      <Email responseData={responseData}/>
     </>
   );
 }
