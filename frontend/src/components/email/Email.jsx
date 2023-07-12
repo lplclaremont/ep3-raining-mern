@@ -1,10 +1,6 @@
 import { useState , useEffect } from 'react'
 import './Email.css'; 
-
-function validateEmail(email) {
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  return emailRegex.test(email);
-}
+import validateEmail from './validateEmail';
 
 function Email({ responseData }) {
   const [emailAddress, setEmailAddress] = useState('');
