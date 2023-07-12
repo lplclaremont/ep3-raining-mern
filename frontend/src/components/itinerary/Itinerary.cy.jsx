@@ -41,7 +41,7 @@ describe('Itinerary', () => {
   ]
 
   it('displays details for all three days', () => {
-    cy.mount(<Itinerary responseData={mockResponseData}/>)
+    cy.mount(<Itinerary responseData={mockResponseData} preferredActivities={[]}/>)
     cy.get('[data-cy="itinerary"]').should('contain.text', '30°C')
     cy.get('[data-cy="itinerary"]').should('contain.text', 'Beach')
 
@@ -50,5 +50,10 @@ describe('Itinerary', () => {
 
     cy.get('[data-cy="itinerary"]').should('contain.text', '22°C')
     cy.get('[data-cy="itinerary"]').should('contain.text', 'Sightseeing')
+  })
+
+  it('displays apology if not all preferred activities get assigned', () => {
+    cy.mount(<Itinerary responseData={mockResponseData} preferredActivities={["Shopping"]}/>)
+    cy.get('[data-cy="itinerary"]').should('contain.text', "Sorry, we couldn't accommodate")
   })
 })
