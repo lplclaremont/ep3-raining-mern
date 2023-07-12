@@ -5,6 +5,8 @@ import DatePicker from "react-datepicker";
 import 'react-datepicker/dist/react-datepicker.css';
 import '../userSelection/UserSelection.css';
 import ActivityContainer from '../activityContainer/ActivityContainer';
+import DateRange from '../dateRange/DateRange';
+import citiesOptions from './citiesOptions';
 
 //after import the dependency and component
 //we define an array that contains objects (with properties key+value+label) representing each city
@@ -31,11 +33,18 @@ const cities = [
 function UserSelection({ setResponseData }) {
   const [selectedCity, setSelectedCity] = useState('');
   const [preferredActivities, setPreferredActivities] = useState([]);
+<<<<<<< HEAD
   const [startDate, setStarDate] = useState(null);// for date-picker
   const [endDate, setEndDate] = useState(null);
 
   // this function will be triggered when the user selects a dropdown
 //it updates the state with the value of the selected option
+=======
+  // default behaviour if no date range selected: 3 days including today
+  const [fromDay, setFromDay] = useState(0);
+  const [toDay, setToDay] = useState(2);
+  
+>>>>>>> origin/main
   const handleCityChange = (event) => {
     setSelectedCity(event.target.value);
   };
@@ -45,8 +54,9 @@ function UserSelection({ setResponseData }) {
 //with required information
   const handleGenerateClick = () => {
     const activitiesParameter = preferredActivities.join(',').toLowerCase();
-    let url = `http://localhost:3000/weather/?city=${selectedCity}`
+    let url = `http://localhost:3000/weather/?city=${selectedCity}&fromDay=${fromDay}&toDay=${toDay}`
 
+<<<<<<< HEAD
     if (startDate && endDate) {
       const startDateStr = startDate.toISOString().split('T')[0];
       const endDateStr = endDate.toISOString().split('T')[0];
@@ -55,6 +65,9 @@ function UserSelection({ setResponseData }) {
     if (activitiesParameter !== '') {
       url += `&activities=${activitiesParameter}`;
     }
+=======
+    if (activitiesParameter != []) url += `&activities=${activitiesParameter}`;
+>>>>>>> origin/main
     
     console.log(selectedCity);
     console.log(preferredActivities);
@@ -72,6 +85,7 @@ function UserSelection({ setResponseData }) {
 // 'generate' button is only visible when a city is selected and it triggered by 'hGC'function when cliced
   return (
     <div>
+<<<<<<< HEAD
       <div>
       <label htmlFor="city-select">Select a city:</label>
       <select id="city-select" data-cy="city-dropdown" onChange={handleCityChange}>
@@ -82,6 +96,23 @@ function UserSelection({ setResponseData }) {
         </option>
       ))}
       </select>
+=======
+      <label htmlFor="city-select">
+        Select a city:
+      </label>
+      <select className="city-select" data-cy="city-dropdown" onChange={handleCityChange}>
+        {citiesOptions.map((city) => (
+          <option key={city.key} value={city.value}>
+            {city.label}
+          </option>
+        ))}
+      </select>
+      <ActivityContainer preferredActivities={ preferredActivities} setPreferredActivities={ setPreferredActivities} />
+      <DateRange setFromDay={setFromDay} setToDay={setToDay}/>
+      {selectedCity && (
+        <button onClick={() => handleGenerateClick(selectedCity)}>Generate</button>
+      )}
+>>>>>>> origin/main
       </div>
 
       <div>

@@ -1,0 +1,34 @@
+/* file: frontend/src/components/recommendation/recommendations.css */
+
+.recommendations-container {
+  display: flex;
+  overflow-x: auto;
+  scrollbar-width: thin;
+  scrollbar-color: gray;
+  padding: 10px;
+}
+
+.recommendation-set {
+  display: flex;
+  flex-direction: column;
+  margin-right: 10px;
+}
+
+.image-background {
+  width: 100%;
+  height: 200px;
+  background-image: url('frontend/public/beach1.jpg.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+.recommendation-items {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.recommendation-item {
+  /* Styles for each recommendation item */
+  /* Adjust the width, height, margin, etc. to fit the design */
+}
