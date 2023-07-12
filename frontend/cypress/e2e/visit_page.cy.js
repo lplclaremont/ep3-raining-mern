@@ -1,5 +1,3 @@
-import mockApiResponse from './mockApiResponse';
-
 describe('Just visit e2e test', () => {
 
   it('should render 3 day display when no activities or dates selected', () => {
@@ -23,4 +21,5 @@ describe('Just visit e2e test', () => {
     cy.get('[data-cy="itinerary"]')
     cy.get('[data-cy="day-display"]').should('have.length', 3)
   });
+  
 });
