@@ -9,26 +9,28 @@ function Itinerary({ responseData, preferredActivities }) {
       preferredActivities.map((activity) => activity)
     );
     const recommendedSet = new Set(responseData.map((day) => day.activity));
-    
-    const difference = [...preferredSet].filter(activity => !recommendedSet.has(activity));
-    
+
+    const difference = [...preferredSet].filter(
+      (activity) => !recommendedSet.has(activity)
+    );
+
     if (difference.length > 0) {
       setErrorMessage(
         "Sorry, we couldn’t accommodate all of the activities you selected. " +
-        "We hope you still like our recommendations for your trip!"
+          "We hope you still like our recommendations for your trip!"
       );
     } else {
       setErrorMessage("");
     }
   }, [responseData, preferredActivities]);
 
-  
   if (responseData.length !== 0) {
     return (
       <div>
         {responseData.map((day) => (
           <Day day={day} key={day.dt} />
         ))}
+        <p>{errorMessage}</p>
       </div>
     );
   } else {
