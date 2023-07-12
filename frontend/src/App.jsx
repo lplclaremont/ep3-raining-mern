@@ -1,13 +1,14 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import UserSelection from './components/userSelection/UserSelection';
-import Itinerary  from './components/itinerary/Itinerary';
+import { useState } from "react";
+import reactLogo from "./assets/react.svg";
+import viteLogo from "/vite.svg";
+import "./App.css";
+import UserSelection from "./components/userSelection/UserSelection";
+import Itinerary from "./components/itinerary/Itinerary";
 
 function App() {
   const [responseData, setResponseData] = useState([]);
-  console.log(responseData)
+  console.log(responseData);
+  const [preferredActivities, setPreferredActivities] = useState([]);
 
   return (
     <>
@@ -20,10 +21,16 @@ function App() {
         </a>
       </div>
       <h1>Whatever the Weather</h1>
-      <UserSelection setResponseData={ setResponseData }/>
-      <Itinerary responseData={ responseData }/>
+      <UserSelection
+        setResponseData={setResponseData}
+        setPreferredActivities={setPreferredActivities}
+      />
+      <Itinerary
+        responseData={responseData}
+        preferredActivities={preferredActivities}
+      />
     </>
   );
 }
 
-export default App
+export default App;
