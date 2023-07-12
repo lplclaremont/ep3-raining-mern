@@ -1,6 +1,10 @@
 
 const recommendActivities = (processedWeatherData, activities, userSelectedActivities) => {
   let dailyArray = processedWeatherData.daily;
+  //initially set all 'chosen' boolean to false
+  for (const activity in activities) {
+    activities[activity].chosen = false;
+  }
   // Update 'chosen' boolean on activities to reflect the user selection 
   userSelectedActivities.forEach((activity) => {
     activities[activity].chosen = true
