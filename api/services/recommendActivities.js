@@ -1,45 +1,12 @@
-<<<<<<< HEAD
 //file: api/services/recommendActivities.js
 
-
-const recommendActivities = (processedWeatherData) => {
-=======
-
 const recommendActivities = (processedWeatherData, activities, userSelectedActivities) => {
->>>>>>> origin/main
   let dailyArray = processedWeatherData.daily;
   // Update 'chosen' boolean on activities to reflect the user selection 
   userSelectedActivities.forEach((activity) => {
     activities[activity].chosen = true
   })
 
-<<<<<<< HEAD
-  const outdoorActivities = ["Beach", "Sightseeing", "Sports"];
-  const indoorActivities = ["Museums", "Shopping", "Eating"];
-
-  dailyArray.sort((a, b) => b.temp.day - a.temp.day);
-  const rainyDays = dailyArray.filter((day) => day.weather[0].main === 'Rain');
-  const nonRainyDays = dailyArray.filter((day) => day.weather[0].main !== 'Rain');
-
-  nonRainyDays.forEach((day, index) => {
-    day.activity = {
-      name: outdoorActivities[index],
-      description: `${day.temp.day} °C and sunshine, great day for ${outdoorActivities[index]}!`,
-    };
-  });
-
-  rainyDays.forEach((day, index) => {
-    day.activity = {
-      name: indoorActivities[index],
-      description: `${day.temp.day} °C and rainy, perfect for ${indoorActivities[index]}!`,
-    };
-  });
-  
-  dailyArray = nonRainyDays.concat(rainyDays);
-  dailyArray.sort((a, b) => a.dt - b.dt);
-  
-  processedWeatherData.daily = dailyArray
-=======
   dailyArray.sort((a, b) => {
     if (a.weather[0].id < b.weather[0].id) {
       return 1; // Move worse weather i.e. lower id to the end
@@ -54,19 +21,12 @@ const recommendActivities = (processedWeatherData, activities, userSelectedActiv
   const prioritisedActivities = prioritiseUserSelection(activities)
   // Assign the best activity to best day
   assignActivities(dailyArray, prioritisedActivities, activities)
->>>>>>> origin/main
 
   dailyArray.sort((a, b) => a.dt - b.dt); // Sort by date (ascending)
   processedWeatherData.daily = dailyArray; // Update daily array with new activity data
   return processedWeatherData;
 };
 
-<<<<<<< HEAD
-module.exports = recommendActivities;
-
-//refactored to add a description, name properties to the 'day.activity' object
-// for non-rainy= sunshine and rainy days=rainy
-=======
 
 const prioritiseUserSelection = (activities) => {
   return Object.entries(activities)
@@ -87,5 +47,3 @@ const assignActivities = (dailyArray, prioritisedActivities, activities) => {
 }
 
 module.exports = recommendActivities;
-
->>>>>>> origin/main
