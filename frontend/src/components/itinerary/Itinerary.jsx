@@ -5,16 +5,13 @@ function Itinerary({ responseData, preferredActivities }) {
   const [errorMessage, setErrorMessage] = useState("");
 
   useEffect(() => {
-    const preferredSet = new Set(
-      preferredActivities.map((activity) => activity)
-    );
-    const recommendedSet = new Set(responseData.map((day) => day.activity));
+    const responseActivities = responseData.map((day) => day.activity);
 
-    const difference = [...preferredSet].filter(
-      (activity) => !recommendedSet.has(activity)
-    );
+    const areAllRecommendationsFulfilled = preferredActivities.every((activity) => {
+      responseActivities.includes(activity)
+    })
 
-    if (difference.length > 0) {
+    if (!areAllRecommendationsFulfilled) {
       setErrorMessage(
         'Sorry, we could not accommodate all of the activities you selected. ' +
           'We hope you still like our recommendations for your trip!'
@@ -26,11 +23,11 @@ function Itinerary({ responseData, preferredActivities }) {
 
   if (responseData.length !== 0) {
     return (
-      <div>
-        {responseData.map((day) => (
-          <Day day={day} key={day.dt} />
-        ))}
-        <p>{errorMessage}</p>
+      <div className='itinerary'>
+        {responseData.map((day) => (<Day day={day} key={day.dt} />))}
+        {errorMessage && (
+          <div className='error-message'>{errorMessage}</div>
+        )}
       </div>
     );
   } else {
