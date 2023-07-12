@@ -5,6 +5,9 @@ const emailController = {
   sendEmail: (req, res) => {
     let emailAddress = req.body.emailAddress;
     let itinerary = req.body.itinerary;
+    const emailAccount = res.locals.emailAccount;
+    const emailPass = res.locals.emailPass;
+
 
     let emailBody = `Your personal itinerary from Whatever The Weather!\n\n`
     itinerary.forEach((day) => {
@@ -17,8 +20,8 @@ const emailController = {
     const transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
-        user: 'fromwhatevertheweather@gmail.com',
-        pass: 'shqbbwkeyvfagvjd'
+        user: emailAccount,
+        pass: emailPass
       }
     });
 
