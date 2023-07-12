@@ -3,12 +3,14 @@
 import { useState } from 'react'
 import ActivityContainer from '../activityContainer/ActivityContainer';
 import DateRange from '../dateRange/DateRange';
+import citiesOptions from './citiesOptions';
 
 function UserSelection({ setResponseData }) {
   const [selectedCity, setSelectedCity] = useState('');
   const [preferredActivities, setPreferredActivities] = useState([]);
+  // default behaviour if no date range selected: 3 days including today
   const [fromDay, setFromDay] = useState(0);
-  const [toDay, setToDay] = useState(0);
+  const [toDay, setToDay] = useState(2);
   
   const handleCityChange = (event) => {
     setSelectedCity(event.target.value);
@@ -31,64 +33,18 @@ function UserSelection({ setResponseData }) {
 
   return (
     <div>
-      <label htmlFor="city-select">Select a city:</label>
-      <select id="city-select" data-cy="city-dropdown" onChange={handleCityChange}>
-        <option key='default-empty' value=''>
-          Select a city
-        </option>
-        <option key='brighton' value='brighton'>
-          Brighton, UK
-        </option>
-        <option key='bournemouth' value='bournemouth'>
-          Bournemouth, UK
-        </option>
-        <option key='cornwall' value='cornwall'>
-          Cornwall, UK
-        </option>	   
-        <option key='danang' value='danang'>
-        DaNang, Vietnam
-        </option>
-        <option key='phuket' value='phuket'>
-        Phuket, Thailand
-        </option>
-        <option key='bali' value='bali'>
-        Bali, Indonesia
-        </option>
-        <option key='lisbon' value='lisbon'>
-          Lisbon, Portugal
-        </option>
-        <option key='valencia' value='valencia'>
-          Valencia, Spain
-        </option>
-        <option key='riga' value='riga'>
-          Riga, Latvia
-        </option>
-        <option key='santorini' value='santorini'>
-          Santorini, Greece
-        </option>
-        <option key='miami' value='miami'>
-         Miami, US
-        </option>
-        <option key='honolulu' value='honolulu'>
-        Honolulu, US
-        </option>
-        <option key='nice' value='nice'>
-        Nice, France
-        </option>
-        <option key='mykonos' value='mykonos'>
-        Mykonos, Greece
-        </option>
-        <option key='malibu' value='malibu'>
-        Malibu, US
-        </option>
-        <option key='athens' value='athens'>
-        Athens, Greek
-        </option>
+      <label htmlFor="city-select">
+        Select a city:
+      </label>
+      <select className="city-select" data-cy="city-dropdown" onChange={handleCityChange}>
+        {citiesOptions.map((city) => (
+          <option key={city.key} value={city.value}>
+            {city.label}
+          </option>
+        ))}
       </select>
       <ActivityContainer preferredActivities={ preferredActivities} setPreferredActivities={ setPreferredActivities} />
-      
       <DateRange setFromDay={setFromDay} setToDay={setToDay}/>
-
       {selectedCity && (
         <button onClick={() => handleGenerateClick(selectedCity)}>Generate</button>
       )}

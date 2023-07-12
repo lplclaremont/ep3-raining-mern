@@ -9,7 +9,7 @@ const weatherController = {
     let city = req.query.city;
 
     let fromDay = req.query.fromDay // === undefined ? 0 : req.query.fromDay;
-    let toDay = req.query.toDay // === undefined ? 7 : req.query.toDay;
+    let toDay = req.query.toDay // === undefined ? 2 : req.query.toDay;
 
     let lat = cityLookup[city].lat;
     let lon = cityLookup[city].lon;

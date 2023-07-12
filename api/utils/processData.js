@@ -5,12 +5,10 @@ const processData = (data, fromDay, toDay) => {
     daily: [],
   };
   
-  // ++ coerces toDay into a numeric, and then increments
+  // ++ coerces toDay into a numeric, and increments it
   toDay++;
 
   for (let i = fromDay; i < toDay; i++) {
-    console.log(i);
-
     const dailyData = {
       dt: data.daily[i].dt,
       temp: { day: data.daily[i].temp.day },
