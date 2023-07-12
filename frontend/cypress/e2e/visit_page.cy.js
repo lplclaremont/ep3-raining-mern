@@ -7,10 +7,9 @@ describe('Just visit e2e test', () => {
       body: mockApiResponse,
     });
 
-    cy.visit('http://localhost:5174');
-    cy.get('[data-cy="city-dropdown"]').select('valencia')
-    .then(() => {
-      cy.contains('Generate').click();
-    })
+    cy.visit('http://localhost:5173');
+    cy.get('[data-cy="city-dropdown"]').select('phuket');
+  
+    cy.contains('Generate').click();
   });
 });
