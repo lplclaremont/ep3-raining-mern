@@ -1,4 +1,4 @@
-import Day from '../day/Day';
+import Day from "../day/Day";
 import { useState, useEffect } from 'react';
 
 function Itinerary({ responseData, preferredActivities }) {
