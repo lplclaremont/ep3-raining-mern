@@ -3,7 +3,8 @@ import reactLogo from './assets/react.svg';
 import viteLogo from '/vite.svg';
 import './App.css';
 import UserSelection from './components/userSelection/UserSelection';
-import Itinerary from './components/itinerary/Itinerary';
+import Itinerary  from './components/itinerary/Itinerary';
+import Email  from './components/email/Email';
 
 function App() {
   const [responseData, setResponseData] = useState([]);
@@ -21,14 +22,9 @@ function App() {
         </a>
       </div>
       <h1>Whatever the Weather</h1>
-      <UserSelection
-        setResponseData={setResponseData}
-        setPreferredActivities={setPreferredActivities}
-      />
-      <Itinerary
-        responseData={responseData}
-        preferredActivities={preferredActivities}
-      />
+      <UserSelection setResponseData={setResponseData} setPreferredActivities={setPreferredActivities}/>
+      <Itinerary responseData={responseData} preferredActivities={preferredActivities}/>
+      <Email responseData={ responseData }/>
     </>
   );
 }

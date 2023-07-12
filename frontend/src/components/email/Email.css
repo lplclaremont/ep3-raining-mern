@@ -1,0 +1,26 @@
+.button-email.clicked {
+  background-color: #f3a24b;
+  color: #fff;
+}
+
+.email-input {
+  width: 250px; 
+}
+
+.email-container {
+  padding-top: 40px; }
+
+.email-container p {
+  margin-bottom: 0px; 
+  margin-top: 0px; 
+}
+
+.email-container button {
+  margin-left: 10px; 
+  font-size: 12px; 
+}
+
+.error-message {
+  font-size: 12px; 
+  color: red; 
+}
