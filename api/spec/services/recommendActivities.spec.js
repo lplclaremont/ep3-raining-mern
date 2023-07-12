@@ -98,20 +98,20 @@ describe('#recommendActivities for three day itinerary', ()=>{
 
     describe('with user prioritised selections', () => {
         it('adds the first outdoor activity in the array to the hottest non-rainy day', () => {
-            let userSelected = ["museums", "eating", "sightseeing"]
+            let userSelected = ["museums", "dining", "sightseeing"]
             result = recommendActivities(mockProcessedWeatherData, activities, userSelected);
             expect(result.daily[0].activity).toEqual("museums")
-            expect(result.daily[1].activity).toEqual("eating")
+            expect(result.daily[1].activity).toEqual("dining")
             expect(result.daily[2].activity).toEqual("sightseeing")
         })
 
 
         it('adds the indoor activity in the array even if only one selected', () => {
-            let userSelected = ["eating"]
+            let userSelected = ["dining"]
             result = recommendActivities(mockProcessedWeatherData, activities, userSelected);
             expect(result.daily[0].activity).toEqual("shopping")
             expect(result.daily[1].activity).toEqual("beach")
-            expect(result.daily[2].activity).toEqual("eating")
+            expect(result.daily[2].activity).toEqual("dining")
         })
 
 
@@ -135,12 +135,12 @@ describe('#recommendActivities for three day itinerary', ()=>{
             mockProcessedWeatherData.daily[2].weather[0].main = "Rain";
             mockProcessedWeatherData.daily[2].weather[0].description = "light rain";
     
-            let userSelected = ["eating"]
+            let userSelected = ["dining"]
             result = recommendActivities(mockProcessedWeatherData, activities, userSelected);
             
             expect(result.daily[0].activity).toEqual("shopping")
             expect(result.daily[1].activity).toEqual("museums")
-            expect(result.daily[2].activity).toEqual("eating")
+            expect(result.daily[2].activity).toEqual("dining")
     
         });
     
@@ -292,15 +292,15 @@ describe('#recommendActivities for 8 day itinerary', ()=>{
             })
             expect(anyUndefined).toEqual(false)
         })
-        it('will include beach when every day is clear weather', () => {
+        it('will include hiking when every day is clear weather', () => {
             for (let i = 0; i < 8; i++) {
                 mockProcessedWeatherData.daily[i].weather[0].id = 800;
             }
             result = recommendActivities(mockProcessedWeatherData, activities, []);
-            let anyBeachDay = result.daily.some((day)=>{
-                return day.activity === 'beach'
+            let includeHiking = result.daily.some((day)=>{
+                return day.activity === 'hiking'
             })
-            expect(anyBeachDay).toEqual(true)
+            expect(includeHiking).toEqual(true)
         })
     });
 
@@ -309,12 +309,12 @@ describe('#recommendActivities for 8 day itinerary', ()=>{
             for (let i = 0; i < 8; i++) {
                 mockProcessedWeatherData.daily[i].weather[0].id = 800;
             }
-            let userSelected = ["art-galleries","spa-trips","cooking-classes","museums", "shopping", "theatres", "libraries", "eating"]
+            let userSelected = ["museums", "shopping", "theatre", "library", "dining"]
             result = recommendActivities(mockProcessedWeatherData, activities, userSelected);
-            let anyBeachDay = result.daily.some((day)=>{
-                return day.activity === 'beach'
+            let includeHiking = result.daily.some((day)=>{
+                return day.activity === 'hiking'
             })
-            expect(anyBeachDay).toEqual(false)
+            expect(includeHiking).toEqual(false)
         })
 
     })

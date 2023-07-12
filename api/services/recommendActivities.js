@@ -45,6 +45,9 @@ const assignActivities = (dailyArray, prioritisedActivities, activities) => {
       (activity) => activities[activity].optimalConditions.includes(day.weather[0].id)
     )
     day.activity = prioritisedActivities[index]
+    if (activities[day.activity].reuse === true) {
+      prioritisedActivities.push(day.activity)
+    }
     prioritisedActivities.splice(index, 1);
   });
 }
