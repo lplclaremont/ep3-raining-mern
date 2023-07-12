@@ -1,12 +1,12 @@
 // file: frontend/src/components/locationsForm/LocationsForm.jsx
 
-import { useState } from "react";
-import ActivityContainer from "../activityContainer/ActivityContainer";
-import DateRange from "../dateRange/DateRange";
-import citiesOptions from "./citiesOptions";
+import { useState } from 'react';
+import ActivityContainer from '../activityContainer/ActivityContainer';
+import DateRange from '../dateRange/DateRange';
+import citiesOptions from './citiesOptions';
 
 function UserSelection({ setResponseData, setPreferredActivities }) {
-  const [selectedCity, setSelectedCity] = useState("");
+  const [selectedCity, setSelectedCity] = useState('');
   const [preferredActivities, setPreferredActivitiesLocal] = useState([]);
   // default behaviour if no date range selected: 3 days including today
   const [fromDay, setFromDay] = useState(0);
@@ -17,7 +17,7 @@ function UserSelection({ setResponseData, setPreferredActivities }) {
   };
 
   const handleGenerateClick = () => {
-    const activitiesParameter = preferredActivities.join(",").toLowerCase();
+    const activitiesParameter = preferredActivities.join(',').toLowerCase();
     let url = `http://localhost:3000/weather/?city=${selectedCity}&fromDay=${fromDay}&toDay=${toDay}`;
 
     if (activitiesParameter != []) url += `&activities=${activitiesParameter}`;

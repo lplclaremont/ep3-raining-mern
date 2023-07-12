@@ -1,5 +1,5 @@
-import Day from "../day/Day";
-import { useState, useEffect } from "react";
+import Day from '../day/Day';
+import { useState, useEffect } from 'react';
 
 function Itinerary({ responseData, preferredActivities }) {
   const [errorMessage, setErrorMessage] = useState("");
@@ -16,11 +16,11 @@ function Itinerary({ responseData, preferredActivities }) {
 
     if (difference.length > 0) {
       setErrorMessage(
-        "Sorry, we couldn’t accommodate all of the activities you selected. " +
-          "We hope you still like our recommendations for your trip!"
+        'Sorry, we could not accommodate all of the activities you selected. ' +
+          'We hope you still like our recommendations for your trip!'
       );
     } else {
-      setErrorMessage("");
+      setErrorMessage('');
     }
   }, [responseData, preferredActivities]);
 
