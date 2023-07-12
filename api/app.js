@@ -14,7 +14,6 @@ app.use((req, res, next) => {
   res.locals.apiKey = process.env.OPENWEATHER_API_KEY;
   res.locals.emailAccount = process.env.EMAIL_ACCOUNT;
   res.locals.emailPass = process.env.EMAIL_PASS;
-
   next();
 });
 
