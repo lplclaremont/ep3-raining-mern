@@ -25,9 +25,16 @@ function UserSelection({ setResponseData, preferredActivities, setPreferredActiv
     console.log(preferredActivities);
     console.log(activitiesParameter);
 
-    fetch(url).then(response => response.json())
-      .then(data => setResponseData(data.daily))
-      .catch(error => console.error(error));
+    fetch(url).then(response => {
+        if (!response.ok) {
+          throw new Error(response.status)
+        }
+        return response.json()
+      })
+      .then(data => {
+        console.log("IN THE SUCESS FETCH CASE")
+        setResponseData(data.daily)})
+      .catch(error => { console.error(error) });
   }
 
   return (
