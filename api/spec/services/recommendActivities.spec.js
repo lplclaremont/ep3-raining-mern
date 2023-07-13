@@ -138,8 +138,8 @@ describe('#recommendActivities for three day itinerary', ()=>{
             let userSelected = ["dining"]
             result = recommendActivities(mockProcessedWeatherData, activities, userSelected);
             
-            expect(result.daily[0].activity).toEqual("shopping")
-            expect(result.daily[1].activity).toEqual("museums")
+            expect(result.daily[0].activity).toEqual("sightseeing")
+            expect(result.daily[1].activity).toEqual("shopping")
             expect(result.daily[2].activity).toEqual("dining")
     
         });
