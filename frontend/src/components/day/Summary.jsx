@@ -1,6 +1,6 @@
 function Summary({ temperature, weather, activities }) {
   const getSummary = () => {
-    let summary = `${temperature}°C and ${weather.description}, `;
+    let summary = ``;
     if (weather.main === "Clear" || weather.main === "Clouds") {
       if (temperature > 25) {
         summary += `it's a warm day, a great time for the ${activities}!`;

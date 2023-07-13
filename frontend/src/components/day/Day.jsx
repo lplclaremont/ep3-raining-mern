@@ -25,10 +25,11 @@ function Day({ day }) {
       </div>
       </div>
       <div>
-        <p className="recommended-activity">recommended activity</p>
+        <p className="recommended-activity">recommended activity:</p>
       <div className="activity">{day.activity}</div>
       </div>
       <Summary
+        className="summary"
         temperature={roundedTemperature}
         weather={day.weather[0]}
         activities={day.activity}

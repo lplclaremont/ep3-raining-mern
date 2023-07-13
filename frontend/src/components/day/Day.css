@@ -1,7 +1,7 @@
 .day {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 2fr;
-    border: 1px solid lightgrey;
+    border: none;
     background-color:#ffffff;
     border-radius: 8px;
     padding: 10px;
@@ -13,11 +13,14 @@
 .temperature {
   color: #ec6b4b;
   font-size: 26px;
+  font-weight: 450;
+
 }
 
 .activity {
   color: #ec6b4b;
   font-size: 23px;
+  font-weight: 450;
 }
 
 .date {
@@ -41,4 +44,9 @@ div {
   margin-top: 0;
   margin-bottom: 0;
   font-size: 15px;
+}
+
+.summary {
+  color: #535354;
+  font-size: 18px;
 }
