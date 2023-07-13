@@ -47,7 +47,9 @@ function UserSelection({ setResponseData, preferredActivities, setPreferredActiv
       <ActivityContainer preferredActivities={preferredActivities} setPreferredActivities={setPreferredActivities}/>
       <DateRange setFromDay={setFromDay} setToDay={setToDay}/>
       {selectedCity && (
+        <div>
         <button onClick={() => handleGenerateClick(selectedCity)}>Generate</button>
+        </div>
       )}
       </div>
   );
