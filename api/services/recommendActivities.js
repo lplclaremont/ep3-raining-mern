@@ -1,20 +1,40 @@
 
 const recommendActivities = (processedWeatherData, activities, userSelectedActivities) => {
   let dailyArray = processedWeatherData.daily;
+  //initially set all 'chosen' boolean to false
+  for (const activity in activities) {
+    activities[activity].chosen = false;
+  }
   // Update 'chosen' boolean on activities to reflect the user selection 
   userSelectedActivities.forEach((activity) => {
     activities[activity].chosen = true
   })
 
   dailyArray.sort((a, b) => {
-    if (a.weather[0].id < b.weather[0].id) {
-      return 1; // Move worse weather i.e. lower id to the end
+    if (a.weather[0].id >= 800 && b.weather[0].id >= 800) {
+      if (a.weather[0].id < b.weather[0].id) {
+        return -1; // Move worse weather i.e. higher id to the end
+      }
+      if (a.weather[0].id > b.weather[0].id ) {
+        return 1; // Move better weather i.e. lower id to the beginning
+      }
+      return b.temp.day - a.temp.day; // Sort by temperature (hot to cold)
+
+    } else {
+
+      if (a.weather[0].id < b.weather[0].id) {
+        return 1; // Move worse weather i.e. lower id to the end
+      }
+      if (a.weather[0].id > b.weather[0].id ) {
+        return -1; // Move better weather i.e. higher id to the beginning
+      }
+      return b.temp.day - a.temp.day; // Sort by temperature (hot to cold)
     }
-    if (a.weather[0].id > b.weather[0].id ) {
-      return -1; // Move better weather i.e.  to the beginning
-    }
-    return b.temp.day - a.temp.day; // Sort by temperature (hot to cold)
+    
   });
+
+  
+
 
   // Get the user's selected activities to front of the list
   const prioritisedActivities = prioritiseUserSelection(activities)
@@ -41,6 +61,9 @@ const assignActivities = (dailyArray, prioritisedActivities, activities) => {
       (activity) => activities[activity].optimalConditions.includes(day.weather[0].id)
     )
     day.activity = prioritisedActivities[index]
+    if (activities[day.activity].reuse === true) {
+      prioritisedActivities.push(day.activity)
+    }
     prioritisedActivities.splice(index, 1);
   });
 }
