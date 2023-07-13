@@ -25,18 +25,11 @@ function UserSelection({ setResponseData, preferredActivities, setPreferredActiv
     console.log(preferredActivities);
     console.log(activitiesParameter);
 
-    fetch(url).then(response => {
-        // if (!response.ok) {
-        //   throw new Error(response.status)
-        // }
-        return response.json()
-      })
+    fetch(url).then(response => response.json())
       .then(data => {
-        console.log("IN THE SUCESS FETCH CASE")
         setResponseData(data.daily)})
       .catch(error => { 
-        console.log("IN THE ERROR CASE")
-        setErrorMessage("NO APIP RESULT SORRY")
+        setErrorMessage("Sorry, the system seems to be down! You're on your own from here")
         console.error(error)});
   }
 

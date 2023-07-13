@@ -16,17 +16,11 @@ const weatherController = {
     let userSelected = req.query.activities === undefined ? [] : req.query.activities.split(",")
     const apiKey = res.locals.apiKey;
 
-    fetch(`https://api.openweathermp.org/data/3.0/onecall?lat=${lat}&lon=${lon}&exclude=current,minutely,hourly,alerts&units=metric&appid=${apiKey}`)
+    fetch(`https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&exclude=current,minutely,hourly,alerts&units=metric&appid=${apiKey}`)
       .then(response => response.json())
       .then(data => processData(data, fromDay, toDay))
       .then(processedData => recommendActivities(processedData, activities, userSelected))
       .then(recommendationsData => res.status(200).json(recommendationsData))
-
-    // fetch(`https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&exclude=current,minutely,hourly,alerts&units=metric&appid=${apiKey}`)
-    //   .then(response => response.json())
-    //   .then(data => processData(data, fromDay, toDay))
-    //   .then(processedData => recommendActivities(processedData, activities, userSelected))
-    //   .then(recommendationsData => res.status(200).json(recommendationsData))
   }
 };
 
