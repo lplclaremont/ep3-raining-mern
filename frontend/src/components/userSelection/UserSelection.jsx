@@ -36,7 +36,7 @@ function UserSelection({ setResponseData, preferredActivities, setPreferredActiv
 
   return (
     <div>
-      <label htmlFor="city-select">Select a city</label>
+      {/* <label htmlFor="city-select">Select a city</label> */}
       <select className="city-select" data-cy="city-dropdown" onChange={handleCityChange}>
         {citiesOptions.map((city) => (
           <option key={city.key} value={city.value}>

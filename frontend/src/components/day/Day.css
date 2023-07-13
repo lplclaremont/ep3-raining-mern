@@ -1,0 +1,9 @@
+.day {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr) 2fr 3fr;
+    border: 1px solid lightgrey;
+    border-radius: 8px;
+    padding: 10px;
+    margin-bottom: 10px;
+    align-items: center;
+}
