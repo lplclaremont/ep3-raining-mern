@@ -9,6 +9,7 @@ import Email  from './components/email/Email';
 function App() {
   const [responseData, setResponseData] = useState([]);
   const [preferredActivities, setPreferredActivities] = useState([]);
+  const [errorMessage, setErrorMessage] = useState("");
   console.log(responseData)
 
   return (
@@ -19,8 +20,8 @@ function App() {
         </a> */}
       </div>
       <h1 className="main-header" >Whatever the Weather</h1>
-      <UserSelection setResponseData={setResponseData} preferredActivities={preferredActivities} setPreferredActivities={setPreferredActivities}/>
-      <Itinerary responseData={responseData} preferredActivities={preferredActivities}/>
+      <UserSelection setResponseData={setResponseData} preferredActivities={preferredActivities} setPreferredActivities={setPreferredActivities} setErrorMessage={setErrorMessage}/>
+      <Itinerary responseData={responseData} preferredActivities={preferredActivities} errorMessage={errorMessage} setErrorMessage={setErrorMessage}/>
       <Email responseData={responseData}/>
     </>
   );
