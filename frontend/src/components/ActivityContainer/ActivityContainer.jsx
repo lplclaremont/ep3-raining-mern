@@ -1,4 +1,5 @@
 import Activity from '../activity/Activity';
+import './ActivityContainer.css'; 
 
 function ActivityContainer({ preferredActivities, setPreferredActivities }) {
   const activityNames = ['Beach', 'Museums', 'Sports', 'Hiking', 'Shopping', 'Dining', 'Sightseeing', 'Theatre', 'Library'];
