@@ -5,7 +5,7 @@ import ActivityContainer from '../activityContainer/ActivityContainer';
 import DateRange from '../dateRange/DateRange';
 import citiesOptions from './citiesOptions';
 
-function UserSelection({ setResponseData, preferredActivities, setPreferredActivities }) {
+function UserSelection({ setResponseData, preferredActivities, setPreferredActivities, setErrorMessage }) {
   const [selectedCity, setSelectedCity] = useState('');
   // default behaviour if no date range selected: 3 days including today
   const [fromDay, setFromDay] = useState(0);
@@ -26,15 +26,18 @@ function UserSelection({ setResponseData, preferredActivities, setPreferredActiv
     console.log(activitiesParameter);
 
     fetch(url).then(response => {
-        if (!response.ok) {
-          throw new Error(response.status)
-        }
+        // if (!response.ok) {
+        //   throw new Error(response.status)
+        // }
         return response.json()
       })
       .then(data => {
         console.log("IN THE SUCESS FETCH CASE")
         setResponseData(data.daily)})
-      .catch(error => { console.error(error) });
+      .catch(error => { 
+        console.log("IN THE ERROR CASE")
+        setErrorMessage("NO APIP RESULT SORRY")
+        console.error(error)});
   }
 
   return (

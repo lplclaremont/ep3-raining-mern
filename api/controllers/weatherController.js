@@ -21,10 +21,6 @@ const weatherController = {
       .then(data => processData(data, fromDay, toDay))
       .then(processedData => recommendActivities(processedData, activities, userSelected))
       .then(recommendationsData => res.status(200).json(recommendationsData))
-      .catch(() => {
-        errorMessage = "Sorry! Unable to get weather data. You'll have to figure this one out on your own."
-        res.status(502).json({"message": errorMessage})
-      })
 
     // fetch(`https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&exclude=current,minutely,hourly,alerts&units=metric&appid=${apiKey}`)
     //   .then(response => response.json())

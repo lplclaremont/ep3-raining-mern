@@ -1,8 +1,9 @@
 import Day from "../day/Day";
 import { useState, useEffect } from 'react';
 
-function Itinerary({ responseData, preferredActivities }) {
-  const [errorMessage, setErrorMessage] = useState("");
+function Itinerary({ responseData, preferredActivities, errorMessage, setErrorMessage}) {
+  //const [errorMessage, setErrorMessage] = useState("");
+  console.log(errorMessage)
 
   useEffect(() => {
     const preferredSet = new Set(preferredActivities.map((activity) => activity.toLowerCase()));
@@ -14,6 +15,8 @@ function Itinerary({ responseData, preferredActivities }) {
         'Sorry, we could not accommodate all of the activities you selected. ' +
           'We hope you still like our recommendations for your trip!'
       );
+    } else if (responseData == []) {
+      setErrorMessage("Sorry, the system seems to be down! You're on your own from here")
     } else {
       setErrorMessage('');
     }
@@ -28,6 +31,10 @@ function Itinerary({ responseData, preferredActivities }) {
         )}
       </div>
     );
+  } else if (errorMessage) {
+    return(
+      <div className='error-message'>{errorMessage}</div>
+    )
   }
 }
 
