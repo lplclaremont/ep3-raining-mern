@@ -13,7 +13,9 @@
 }
 
 .email-container {
-  padding-top: 40px; }
+  padding-top: 40px; 
+  margin-bottom: 60px;
+}
 
 .email-container p {
   margin-bottom: 0px; 

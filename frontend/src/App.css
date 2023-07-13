@@ -1,7 +1,7 @@
 #root {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 1rem;
   text-align: center;
 }
 
@@ -45,4 +45,27 @@
   color: #ec6b4b;
   font-family: 'Leckerli One', cursive;
   font-size: 80px;
+}
+
+footer {
+  background-color: #404041;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 -40px -20px -40px;
+  height: 100px;
+}
+
+footer p {
+  margin: 0;
+  color: #f4f4f4; 
+  font-size: 15px;
+}
+
+.logo.open-weather {
+  width: 70px;
+  height: auto;
+  margin-left: 0px;
+  padding-left: 15px;
+  padding-bottom: 40px;
 }

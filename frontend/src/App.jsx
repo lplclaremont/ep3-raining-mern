@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import openWeatherLogo from './assets/openweatherlogo.png'
 import './App.css'
 import UserSelection from './components/userSelection/UserSelection';
 import Itinerary  from './components/itinerary/Itinerary';
@@ -23,6 +23,10 @@ function App() {
       <UserSelection setResponseData={setResponseData} preferredActivities={preferredActivities} setPreferredActivities={setPreferredActivities} setErrorMessage={setErrorMessage}/>
       <Itinerary responseData={responseData} preferredActivities={preferredActivities} errorMessage={errorMessage} setErrorMessage={setErrorMessage}/>
       <Email responseData={responseData}/>
+      <footer>
+        <p>Whatever the Weather is powered by OpenWeather API</p>
+        <img src={openWeatherLogo} className="logo open-weather" alt="OpenWeather logo" />
+      </footer>
     </>
   );
 }
