@@ -18,12 +18,14 @@ function Day({ day }) {
       <div className="date">{formattedDate}</div>
       <div className="temperature">{roundedTemperature}°C</div>
       </div>
+      <div>
+      <div className="weather">{day.weather[0].description}</div>
       <div className="weather-icon">
         <img src={iconUrl} alt={day.weather[0].description} />
       </div>
-      <div className="weather">{day.weather[0].description}</div>
+      </div>
       <div>
-        <p>Recommended activity</p>
+        <p className="recommended-activity">recommended activity</p>
       <div className="activity">{day.activity}</div>
       </div>
       <Summary

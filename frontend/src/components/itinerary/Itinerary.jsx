@@ -1,5 +1,6 @@
 import Day from "../day/Day";
 import { useEffect } from 'react';
+import './Itinerary.css'
 
 function Itinerary({ responseData, preferredActivities, errorMessage, setErrorMessage}) {
 
