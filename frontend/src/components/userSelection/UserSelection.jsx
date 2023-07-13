@@ -4,6 +4,7 @@ import { useState } from 'react'
 import ActivityContainer from '../activityContainer/ActivityContainer';
 import DateRange from '../dateRange/DateRange';
 import citiesOptions from './citiesOptions';
+import './UserSelection.css'; 
 
 function UserSelection({ setResponseData, preferredActivities, setPreferredActivities, setErrorMessage }) {
   const [selectedCity, setSelectedCity] = useState('');
