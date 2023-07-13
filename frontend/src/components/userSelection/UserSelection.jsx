@@ -48,7 +48,7 @@ function UserSelection({ setResponseData, preferredActivities, setPreferredActiv
       <DateRange setFromDay={setFromDay} setToDay={setToDay}/>
       {selectedCity && (
         <div>
-        <button onClick={() => handleGenerateClick(selectedCity)}>Generate</button>
+        <button className="generate-button" onClick={() => handleGenerateClick(selectedCity)}>Generate</button>
         </div>
       )}
       </div>
