@@ -19,3 +19,8 @@ label {
     background-color: #edeaea;
     margin-bottom: 15px;
 }
+
+.feedback-message {
+    text-align: center;
+    margin: auto;
+}
