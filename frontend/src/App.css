@@ -46,3 +46,113 @@
   font-family: 'Leckerli One', cursive;
   font-size: 80px;
 }
+div.relative {
+  position: relative;
+  border: 3px solid #73AD21;
+} 
+
+.image1 {
+  position: absolute;
+  top: 0px;
+  left: 200px;
+  width: 50px;
+  height: auto;
+}
+.image2 {
+  position: absolute;
+  top: 0px;
+  right: 100px;
+  width: 60px;
+  height: auto;
+  animation: rotate1 5s infinite linear;
+}
+@keyframes rotate1 {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.image3 {
+  position: absolute;
+  top: -10px;
+  left: 490px;
+  width: 100px;
+  height: auto;
+  animation: rotate2 2s infinite linear;
+}
+@keyframes rotate2 {
+  0% {
+    transform: rotate(-10deg);
+  }
+  50% {
+    transform: rotate(10deg);
+  }
+  100% {
+    transform: rotate(-10deg);
+  }
+}
+
+
+.swoosh-fade-in-out {
+  animation: fade-in-out 10s infinite;
+}
+
+@keyframes fade-in-out {
+  0% {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  25% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+    transform: translateX(0);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(100%)
+  }
+}
+
+.swoosh-in {
+  animation: swoosh-in 2s;
+}
+
+.rain1 {
+  position: absolute;
+  top: -10px;
+  left: 40px;
+  width: 100px;
+  height: auto;
+}
+
+.rain2 {
+  position: absolute;
+  top: -10px;
+  right: 100px;
+  width: 100px;
+  height: auto;
+  animation: fade-in 10s infinite;
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  25% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+    transform: translateX(0);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(-100%)
+  }
+}
