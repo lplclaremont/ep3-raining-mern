@@ -45,7 +45,18 @@
   color: #ec6b4b;
   font-family: 'Leckerli One', cursive;
   font-size: 80px;
+  margin-bottom: 5px;
 }
+
+.sub-heading {
+  color: #404041;
+  font-family: 'Leckerli One', cursive;
+  font-size: 20px;
+  width: 50%;
+  margin: auto;
+  margin-bottom: 40px;
+}
+
 
 footer {
   background-color: #404041;
