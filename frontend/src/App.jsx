@@ -14,9 +14,9 @@ function App() {
   return (
     <>
       <div>
-        <a href="https://react.dev" target="_blank" rel="noopener noreferrer">
+        {/* <a href="https://react.dev" target="_blank" rel="noopener noreferrer">
           <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+        </a> */}
       </div>
       <h1 className="main-header" >Whatever the Weather</h1>
       <UserSelection setResponseData={setResponseData} preferredActivities={preferredActivities} setPreferredActivities={setPreferredActivities}/>
