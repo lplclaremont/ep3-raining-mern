@@ -5,7 +5,7 @@ import ActivityContainer from '../activityContainer/ActivityContainer';
 import DateRange from '../dateRange/DateRange';
 import citiesOptions from './citiesOptions';
 
-function UserSelection({ setResponseData, preferredActivities, setPreferredActivities }) {
+function UserSelection({ setResponseData, preferredActivities, setPreferredActivities, setErrorMessage }) {
   const [selectedCity, setSelectedCity] = useState('');
   // default behaviour if no date range selected: 3 days including today
   const [fromDay, setFromDay] = useState(0);
@@ -26,8 +26,11 @@ function UserSelection({ setResponseData, preferredActivities, setPreferredActiv
     console.log(activitiesParameter);
 
     fetch(url).then(response => response.json())
-      .then(data => setResponseData(data.daily))
-      .catch(error => console.error(error));
+      .then(data => {
+        setResponseData(data.daily)})
+      .catch(error => { 
+        setErrorMessage("Sorry, the system seems to be down! You're on your own from here")
+        console.error(error)});
   }
 
   return (

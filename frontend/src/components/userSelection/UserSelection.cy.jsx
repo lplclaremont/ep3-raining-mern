@@ -15,7 +15,7 @@ describe("UserSelection", () => {
     }
     ).as('getWeather');
   
-    cy.mount(<UserSelection preferredActivities={[]} />);
+    cy.mount(<UserSelection preferredActivities={[]} setErrorMessage={() => {}}/>);
   
     cy.get('[data-cy=city-dropdown]').select('valencia');
   

@@ -1,8 +1,7 @@
 import Day from "../day/Day";
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 
-function Itinerary({ responseData, preferredActivities }) {
-  const [errorMessage, setErrorMessage] = useState("");
+function Itinerary({ responseData, preferredActivities, errorMessage, setErrorMessage}) {
 
   useEffect(() => {
     const preferredSet = new Set(preferredActivities.map((activity) => activity.toLowerCase()));
@@ -27,6 +26,10 @@ function Itinerary({ responseData, preferredActivities }) {
           <div className='error-message'>{errorMessage}</div>
         )}
       </div>
+    );
+  } else if (errorMessage) {
+    return(
+      <div className='error-message'>{errorMessage}</div>
     )
   }
 }
