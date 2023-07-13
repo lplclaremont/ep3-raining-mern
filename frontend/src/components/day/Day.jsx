@@ -9,12 +9,10 @@ function Day({ day }) {
 
   const roundedTemperature = day.temp.day.toFixed();
 
-  console.log(day);
-
   const iconUrl = `http://openweathermap.org/img/wn/${day.weather[0].icon}.png`;
 
   return (
-    <article className="day" key={day.dt}>
+    <article className="day" key={day.dt} data-cy="day-display">
       <div className="date">{formattedDate}</div>
       <div className="temperature">{roundedTemperature}°C</div>
       <div className="weather-icon">

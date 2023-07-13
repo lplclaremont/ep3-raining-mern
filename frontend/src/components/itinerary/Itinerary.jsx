@@ -10,7 +10,7 @@ function Itinerary({ responseData, preferredActivities, errorMessage, setErrorMe
 
     if (difference.length > 0) {
       setErrorMessage(
-        'Sorry, we could not accommodate all of the activities you selected. ' +
+        `Sorry, we couldn't accommodate all of the activities you selected. ` +
           'We hope you still like our recommendations for your trip!'
       );
     } else {
@@ -20,8 +20,8 @@ function Itinerary({ responseData, preferredActivities, errorMessage, setErrorMe
 
   if (responseData.length !== 0) {
     return (
-      <div className='itinerary'>
-        {responseData.map((day) => (<Day day={day} key={day.dt} />))}
+      <div className='itinerary' data-cy="itinerary">
+        {responseData.map((day) => <Day day={day} key={day.dt} />)}
         {errorMessage && (
           <div className='error-message'>{errorMessage}</div>
         )}

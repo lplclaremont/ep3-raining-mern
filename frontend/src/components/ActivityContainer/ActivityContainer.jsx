@@ -1,10 +1,10 @@
 import Activity from '../activity/Activity';
 
 function ActivityContainer({ preferredActivities, setPreferredActivities }) {
-  const activityNames = ['Beach', 'Museums', 'Sports', 'Shopping', 'Eating', 'Sightseeing'];
+  const activityNames = ['Beach', 'Museums', 'Sports', 'Hiking', 'Shopping', 'Dining', 'Sightseeing', 'Theatre', 'Library'];
 
   return (
-    <div className='ActivityContainer'>
+    <div className='ActivityContainer' data-cy="activity-container">
       {activityNames.map((activityName) => (
         <Activity
           key={activityName}

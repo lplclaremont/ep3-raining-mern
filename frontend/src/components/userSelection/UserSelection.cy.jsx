@@ -8,14 +8,14 @@ describe("UserSelection", () => {
   })
 
   it('calls the /weather endpoint with correct city in query parameters', () => {
-    cy.intercept('GET', 'http://localhost:3000/weather/?city=valencia', (req) => {
+    cy.intercept('GET', "http://localhost:3000/weather/?city=valencia*", (req) => {
       req.reply({
         statusCode: 200
       });
     }
     ).as('getWeather');
   
-    cy.mount(<UserSelection />);
+    cy.mount(<UserSelection preferredActivities={[]} />);
   
     cy.get('[data-cy=city-dropdown]').select('valencia');
   
@@ -23,6 +23,6 @@ describe("UserSelection", () => {
   
     cy.wait('@getWeather')
       .its('request.url')
-      .should('eq', 'http://localhost:3000/weather/?city=valencia');
+      .should('eq', "http://localhost:3000/weather/?city=valencia&fromDay=0&toDay=2");
   });
 })
