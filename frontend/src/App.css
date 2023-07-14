@@ -124,16 +124,16 @@ div.relative {
 
 .rain1 {
   position: absolute;
-  top: -10px;
-  left: 40px;
+  top: -35px;
+  left: 400px;
   width: 100px;
   height: auto;
 }
 
 .rain2 {
   position: absolute;
-  top: -10px;
-  right: 100px;
+  top: -35px;
+  right: 300px;
   width: 100px;
   height: auto;
   animation: fade-in 10s infinite;
