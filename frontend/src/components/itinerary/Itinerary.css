@@ -1,0 +1,9 @@
+.itinerary {
+    background-color:#f4ac8c;
+    border-radius: 20px;
+    padding: 20px;
+}
+
+.feedback-message{
+    width: 80%;
+}

@@ -1,10 +1,15 @@
 .button-email.clicked {
-  background-color: #f3a24b;
+  background-color: #ec6b4b;
   color: #fff;
 }
 
+.email-input, .button-email.clicked {
+  font-size: 18px;
+}
+
 .email-input {
-  width: 250px; 
+  width: 300px; 
+  height: 30px
 }
 
 .email-container {
@@ -17,10 +22,12 @@
 
 .email-container button {
   margin-left: 10px; 
-  font-size: 12px; 
+  font-size: 18px;
+  height: 40px
+
 }
 
 .error-message {
   font-size: 12px; 
-  color: red; 
+  color: rgb(245, 74, 74); 
 }

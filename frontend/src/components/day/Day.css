@@ -1,0 +1,52 @@
+.day {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 2fr;
+    border: none;
+    background-color:#ffffff;
+    border-radius: 8px;
+    padding: 10px;
+    margin: 30px;
+    align-items: center;
+    border-radius: 20px;
+}
+
+.temperature {
+  color: #ec6b4b;
+  font-size: 26px;
+  font-weight: 450;
+
+}
+
+.activity {
+  color: #ec6b4b;
+  font-size: 23px;
+  font-weight: 450;
+}
+
+.date {
+  font-size: 22px;
+}
+
+.weather {
+  font-size: 15px;
+  margin-bottom: -9px;
+}
+
+.weather-icon {
+  margin-bottom: -15px;
+}
+
+div {
+  padding: 3px;
+}
+
+.recommended-activity {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: 15px;
+}
+
+.summary {
+  color: #535354;
+  font-size: 18px;
+}

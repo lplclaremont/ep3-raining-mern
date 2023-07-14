@@ -1,5 +1,6 @@
 import Day from "../day/Day";
 import { useEffect } from 'react';
+import './Itinerary.css'
 
 function Itinerary({ responseData, preferredActivities, errorMessage, setErrorMessage}) {
 
@@ -23,7 +24,7 @@ function Itinerary({ responseData, preferredActivities, errorMessage, setErrorMe
       <div className='itinerary' data-cy="itinerary">
         {responseData.map((day) => <Day day={day} key={day.dt} />)}
         {errorMessage && (
-          <div className='error-message'>{errorMessage}</div>
+          <div className='feedback-message'>{errorMessage}</div>
         )}
       </div>
     );

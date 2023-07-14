@@ -14,15 +14,21 @@ function App() {
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank" rel="noopener noreferrer">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
+      {/* <div>
         <a href="https://react.dev" target="_blank" rel="noopener noreferrer">
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
+      </div> */}
+      <h1 className="main-header" >
+      <div class="relative">
+        <img src="/public/header.png" alt = "Whatever the Weather"/>
+        <img src="/public/cloud.png" alt = "image" class="image1"/>
+        <img src="/public/large-sun.png" alt = "image" class="image2"/>
+        <img src="/public/sun-hat.png" alt = "image" class="image3"/>
+        <img src="/public/flippedrain.png" alt = "image" class="rain2 "/>
+        <img src="/public/snow.png" alt = "image" class="snow "/>
       </div>
-      <h1>Whatever the Weather</h1>
+      </h1>
       <UserSelection setResponseData={setResponseData} preferredActivities={preferredActivities} setPreferredActivities={setPreferredActivities} setErrorMessage={setErrorMessage}/>
       <Itinerary responseData={responseData} preferredActivities={preferredActivities} errorMessage={errorMessage} setErrorMessage={setErrorMessage}/>
       <Email responseData={responseData}/>

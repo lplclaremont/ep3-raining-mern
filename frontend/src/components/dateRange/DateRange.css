@@ -1,0 +1,10 @@
+.date-picker {
+    width: 220px;
+    height: 30px;
+    padding: 6px;
+    font-size: 18px;
+    border-radius: 8px;
+    border-width: 1px;
+    text-align: center;
+    margin-bottom: 15px;
+}

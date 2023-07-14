@@ -3,13 +3,13 @@
     border: none;
     padding: 10px 20px;
     margin: 5px;
-    background-color: #e0e0e0;
+    background-color: #edeaea;
     color: #333;
-    font-size: 16px;
+    font-size: 20px;
     cursor: pointer;
   }
   
   .button-activity.active {
-    background-color: #f3a24b;
+    background-color: #ec6b4b;
     color: #fff;
   }

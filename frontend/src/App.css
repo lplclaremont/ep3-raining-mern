@@ -40,3 +40,157 @@
 .read-the-docs {
   color: #888;
 }
+
+.main-header {
+  color: #ec6b4b;
+  font-family: 'Leckerli One', cursive;
+  font-size: 80px;
+}
+div.relative {
+  position: relative;
+}
+
+@keyframes bounce-animation {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-2px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+
+.image1 {
+  position: absolute;
+  top: -40px;
+  left: 80px;
+  width: 100px;
+  height: auto;
+  animation: bounce-animation 0.5s infinite;
+}
+.image2 {
+  position: absolute;
+  top: -10px;
+  right: 100px;
+  width: 80px;
+  height: auto;
+  animation: rotate1 5s infinite linear;
+  z-index: -1
+}
+@keyframes rotate1 {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.image3 {
+  position: absolute;
+  top: -10px;
+  left: 490px;
+  width: 100px;
+  height: auto;
+  animation: rotate2 5s infinite linear;
+}
+@keyframes rotate2 {
+  0% {
+    transform: rotate(-10deg);
+  }
+  50% {
+    transform: rotate(10deg);
+  }
+  100% {
+    transform: rotate(-10deg);
+  }
+}
+
+.swoosh-fade-in-out {
+  animation: fade-in-out 10s infinite;
+}
+
+@keyframes fade-in-out {
+  0% {
+    opacity: 0;
+    transform: translateX(-40%);
+  }
+  25% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+    transform: translateX(0);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(40%)
+  }
+}
+
+.swoosh-in {
+  animation: swoosh-in 2s;
+}
+
+.rain1 {
+  position: absolute;
+  top: -35px;
+  left: 400px;
+  width: 90px;
+  height: auto;
+}
+
+.rain2 {
+  position: absolute;
+  top: -35px;
+  right: 300px;
+  width: 90px;
+  height: auto;
+  animation: fade-in 10s infinite;
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  25% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+    transform: translateX(0);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(-100%)
+  }
+}
+
+.snow {
+  animation: fade 10s infinite;
+  position: absolute;
+  top: -10px;
+  left: 310px;
+  width: 70px;
+  height: auto;
+}
+
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+  25% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+
+  }
+  100% {
+    opacity: 1;
+  }
+}

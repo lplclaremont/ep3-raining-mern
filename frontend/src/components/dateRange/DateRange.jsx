@@ -2,6 +2,7 @@ import { useState } from "react";
 import DatePicker from "react-datepicker";
 import { addDays, differenceInCalendarDays } from "date-fns";
 import "react-datepicker/dist/react-datepicker.css";
+import './DateRange.css'
 
 function DateRange({ setFromDay, setToDay }) {
   const [startDate, setStartDate] = useState(new Date());
@@ -19,7 +20,7 @@ function DateRange({ setFromDay, setToDay }) {
   };
 
   return (
-    <DatePicker
+    <DatePicker className="date-picker"
       dateFormat="dd/MM/yyyy"
       selected={startDate}
       onChange={onDateChange}

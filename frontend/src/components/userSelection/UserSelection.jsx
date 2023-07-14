@@ -4,6 +4,7 @@ import { useState } from 'react'
 import ActivityContainer from '../activityContainer/ActivityContainer';
 import DateRange from '../dateRange/DateRange';
 import citiesOptions from './citiesOptions';
+import './UserSelection.css'; 
 
 function UserSelection({ setResponseData, preferredActivities, setPreferredActivities, setErrorMessage }) {
   const [selectedCity, setSelectedCity] = useState('');
@@ -35,7 +36,7 @@ function UserSelection({ setResponseData, preferredActivities, setPreferredActiv
 
   return (
     <div>
-      <label htmlFor="city-select">Select a city:</label>
+      {/* <label htmlFor="city-select">Select a city</label> */}
       <select className="city-select" data-cy="city-dropdown" onChange={handleCityChange}>
         {citiesOptions.map((city) => (
           <option key={city.key} value={city.value}>
@@ -46,7 +47,9 @@ function UserSelection({ setResponseData, preferredActivities, setPreferredActiv
       <ActivityContainer preferredActivities={preferredActivities} setPreferredActivities={setPreferredActivities}/>
       <DateRange setFromDay={setFromDay} setToDay={setToDay}/>
       {selectedCity && (
-        <button onClick={() => handleGenerateClick(selectedCity)}>Generate</button>
+        <div>
+        <button className="generate-button" onClick={() => handleGenerateClick(selectedCity)}>Generate</button>
+        </div>
       )}
       </div>
   );
