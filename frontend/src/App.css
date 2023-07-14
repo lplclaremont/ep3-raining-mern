@@ -194,3 +194,14 @@ div.relative {
     opacity: 1;
   }
 }
+
+
+.sub-heading {
+  color: #404041;
+  font-family: 'Leckerli One', cursive;
+  font-size: 20px;
+  width: 50%;
+  margin: auto;
+  margin-top: -40px;
+  margin-bottom: 40px;
+}
