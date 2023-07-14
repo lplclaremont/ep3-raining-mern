@@ -29,6 +29,7 @@ function App() {
         <img src="/public/snow.png" alt = "image" class="snow "/>
       </div>
       </h1>
+      <h2 className="sub-heading" >A personalised itinerary for your upcoming trip, based on the weather forecast!</h2>
       <UserSelection setResponseData={setResponseData} preferredActivities={preferredActivities} setPreferredActivities={setPreferredActivities} setErrorMessage={setErrorMessage}/>
       <Itinerary responseData={responseData} preferredActivities={preferredActivities} errorMessage={errorMessage} setErrorMessage={setErrorMessage}/>
       <Email responseData={responseData}/>
