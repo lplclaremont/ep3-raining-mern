@@ -22,11 +22,11 @@ function App() {
       <h1 className="main-header" >
       <div class="relative">
         <img src="/public/header.png" alt = "Whatever the Weather"/>
-        <img src="/public/small-sun.png" alt = "image" class="image1"/>
+        <img src="/public/cloud.png" alt = "image" class="image1"/>
         <img src="/public/large-sun.png" alt = "image" class="image2"/>
         <img src="/public/sun-hat.png" alt = "image" class="image3"/>
-        <img src="/public/rain.png" alt = "image" class="rain1 swoosh-fade-in-out"/>
         <img src="/public/flippedrain.png" alt = "image" class="rain2 "/>
+        <img src="/public/snow.png" alt = "image" class="snow "/>
       </div>
       </h1>
       <UserSelection setResponseData={setResponseData} preferredActivities={preferredActivities} setPreferredActivities={setPreferredActivities} setErrorMessage={setErrorMessage}/>

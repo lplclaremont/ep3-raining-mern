@@ -48,23 +48,37 @@
 }
 div.relative {
   position: relative;
-  border: 3px solid #73AD21;
-} 
+}
+
+@keyframes bounce-animation {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-2px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
 
 .image1 {
   position: absolute;
-  top: 0px;
-  left: 200px;
-  width: 50px;
+  top: -40px;
+  left: 80px;
+  width: 100px;
   height: auto;
+  animation: bounce-animation 0.5s infinite;
 }
 .image2 {
   position: absolute;
-  top: 0px;
+  top: -10px;
   right: 100px;
-  width: 60px;
+  width: 80px;
   height: auto;
   animation: rotate1 5s infinite linear;
+  z-index: -1
 }
 @keyframes rotate1 {
   0% {
@@ -81,7 +95,7 @@ div.relative {
   left: 490px;
   width: 100px;
   height: auto;
-  animation: rotate2 2s infinite linear;
+  animation: rotate2 5s infinite linear;
 }
 @keyframes rotate2 {
   0% {
@@ -95,7 +109,6 @@ div.relative {
   }
 }
 
-
 .swoosh-fade-in-out {
   animation: fade-in-out 10s infinite;
 }
@@ -103,7 +116,7 @@ div.relative {
 @keyframes fade-in-out {
   0% {
     opacity: 0;
-    transform: translateX(-100%);
+    transform: translateX(-40%);
   }
   25% {
     opacity: 1;
@@ -114,7 +127,7 @@ div.relative {
   }
   100% {
     opacity: 1;
-    transform: translateX(100%)
+    transform: translateX(40%)
   }
 }
 
@@ -126,7 +139,7 @@ div.relative {
   position: absolute;
   top: -35px;
   left: 400px;
-  width: 100px;
+  width: 90px;
   height: auto;
 }
 
@@ -134,7 +147,7 @@ div.relative {
   position: absolute;
   top: -35px;
   right: 300px;
-  width: 100px;
+  width: 90px;
   height: auto;
   animation: fade-in 10s infinite;
 }
@@ -154,5 +167,30 @@ div.relative {
   100% {
     opacity: 1;
     transform: translateX(-100%)
+  }
+}
+
+.snow {
+  animation: fade 10s infinite;
+  position: absolute;
+  top: -10px;
+  left: 310px;
+  width: 70px;
+  height: auto;
+}
+
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+  25% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+
+  }
+  100% {
+    opacity: 1;
   }
 }
