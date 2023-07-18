@@ -49,6 +49,16 @@ To run Jest tests, in `/api`:
 npm test
 ```
 
+## Our process
+
+Details here...
+
+## Areas for future development
+
+- There is significant scope for `recommendActivities`, the function that handles the business logic, to be expanded and developed. Insert suggestions here...
+
+- Other suggestions
+
 ## Technologies
 
 This project was built using Node v20.2, and uses the following technologies:
