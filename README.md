@@ -65,3 +65,12 @@ This project was built using Node v20.2, and uses the following technologies:
 - nodemailer – email sending
 - react-datepicker – Datepicker component
 - npm – dependency management
+
+## Credits
+
+- [Ann Chayada Sansiriwong](https://github.com/csanann)
+- [Caroline Evans](https://github.com/cvass1)
+- [Faridat Abdulsalami](https://github.com/fa385)
+- [Ha Nguyen](https://github.com/hanguyen21)
+- [Louis Claremont](https://github.com/lplclaremont)
+- [Will Davies](https://github.com/wimdavies)
