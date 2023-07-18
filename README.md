@@ -48,3 +48,20 @@ To run Jest tests, in `/api`:
 ```shell
 npm test
 ```
+
+## Technologies
+
+This project was built using Node v20.2, and uses the following technologies:
+
+- Express.js – backend API server framework
+- React.js – frontend UI library
+- Vite – frontend build tool (replacing `create-react-app`)
+- Jest – backend testing framework
+- SuperTest – HTTP server testing library
+- Cypress – frontend testing framework
+- ESLint – code analysis
+- dotenv – environment variable management
+- nodemon – automatic server restarting
+- nodemailer – email sending
+- react-datepicker – Datepicker component
+- npm – dependency management
