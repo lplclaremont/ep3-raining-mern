@@ -51,13 +51,27 @@ npm test
 
 ## Our process
 
-Details here...
+- Created a team charter where we set out our working practices, team goals, personal goals and team values
+- Set about defining the product, creating user stories and narrowing down a Minimum Viable Product
+- Set out a sprint schedule of 2/3 day sprints and organised team meetings and retros
+- Used Excallidraw to create workflow diagrams and wireframes
+- Used trello tickets to break down the project into clear, concise and manageable units of work
 
 ## Areas for future development
 
-- There is significant scope for `recommendActivities`, the function that handles the business logic, to be expanded and developed. Insert suggestions here...
+There is significant scope for `recommendActivities`, the function that handles the business logic, to be expanded and developed:
 
-- Other suggestions
+- Ensure any repeated activities are scheduled as far apart as possible
+- Maintaining optimum weather/activity combinations for non user-selected suggestions
+- Adding a min/max temperature filter
+
+Other potential areas for development:
+
+- A more tailored list of activity options for each city
+- Include links for suggested activities
+- Ability for the user to force certain activity/day combinations
+- An additional page for historical weather patterns for a given city
+- User login functionality to save preferences and itineraries
 
 ## Technologies
 
