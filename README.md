@@ -49,6 +49,11 @@ To run Jest tests, in `/api`:
 npm test
 ```
 
+## Webpage view
+
+![webpage-screenshot](./images/webpage-screenshot.png)
+![itinerary-screenshot](./images/itinerary-screenshot.png)
+
 ## Our process
 
 - Created a team charter where we set out our working practices, team goals, personal goals and team values
