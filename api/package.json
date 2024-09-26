@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "start": "nodemon",
-    "test": "jest"
+    "test": "jest --detectOpenHandles"
   },
   "keywords": [],
   "author": "",
